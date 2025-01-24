@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Django on ExampleSite</title>
+    <link>http://localhost:1313/tags/django/</link>
+    <description>Recent content in Django on ExampleSite</description>
+    <image>
+      <title>ExampleSite</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.141.0</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 15 Jan 2025 11:30:03 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python的一些知识点</title>
+      <link>http://localhost:1313/posts/python/</link>
+      <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
+      <guid>http://localhost:1313/posts/python/</guid>
+      <description>&lt;h4 id=&#34;可迭代对象&#34;&gt;可迭代对象&lt;/h4&gt;
+&lt;p&gt;包含 &lt;strong&gt;iter&lt;/strong&gt; 方法，能够被遍历的都可以称之为可迭代对象。 例如python的容器类数据类型：List, Tuple, Set, Dict。使用 &lt;code&gt;iter()&lt;/code&gt; 函数可以将可迭代对象转换成迭代器。&lt;/p&gt;
+&lt;h4 id=&#34;迭代器&#34;&gt;迭代器&lt;/h4&gt;
+&lt;p&gt;包含 &lt;strong&gt;next&lt;/strong&gt; 魔法方法的对象。 对于可迭代对象，可以通过 &lt;code&gt;next()&lt;/code&gt; 方法调用，每次调用，都会返回可迭代对象的下一个元素。直到没有元素返回时抛出StopIteration异常。&lt;/p&gt;
+&lt;h4 id=&#34;生成器&#34;&gt;生成器&lt;/h4&gt;
+&lt;p&gt;可以看成是一个特殊的迭代器。使用 yield 方法代替 return。 每次调用，都会记录函数状态并返回当前值。下次调用，会继续从纪录的地方继续执行。&lt;/p&gt;
+&lt;h4 id=&#34;装饰器&#34;&gt;装饰器&lt;/h4&gt;
+&lt;p&gt;包含wrapper方法。旨在不改变函数原有代码的前提下，修改函数/给函数添加功能。 实现原理是因为 将原函数当成参数传入装饰器函数。 涉及到一个概念： Python中，函数是一等公民.&lt;/p&gt;
+&lt;h4 id=&#34;上下文管理器&#34;&gt;上下文管理器&lt;/h4&gt;
+&lt;p&gt;可以理解成包含__enter__, __exit__魔法方法的对象。 通过with调用，在读取文件，数据库连接，锁的获取和释放中经常使用。作用是确保资源的正确使用和释放。例如：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    with open(&amp;#39;example.json&amp;#39;, &amp;#39;r&amp;#39;):
+        content = file.read()
+        print(content)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;open(&amp;rsquo;example.json&amp;rsquo;, &amp;lsquo;r&amp;rsquo;) 会创建一个文件对象，它就是一个上下文管理器。进入with语句时，文件被打开。当with语句结束时，文件会自动关闭。就算读取文件过程中发生异常，文件也会被正常关闭。
+下面是数据库上下文管理器示例：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;import sqlite3
+
+
+class DatabaseConnection:
+    def __init__(self, db_name):
+        self.db_name = db_name
+        self.connection = None
+
+
+    def __enter__(self):
+        self.connection = sqlite3.connect(self.db_name)
+        return self.connection
+
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        if self.connection:
+            self.connection.close()
+
+
+# 使用数据库连接上下文管理器
+with DatabaseConnection(&amp;#39;example.db&amp;#39;) as conn:
+    cursor = conn.cursor()
+    cursor.execute(&amp;#34;SELECT * FROM users&amp;#34;)
+    rows = cursor.fetchall()
+    print(rows)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;contextlib 提供了一些创建上下文管理器的工具，使代码更简洁。使用 contextmanager 装饰器可以将一个生成器函数转换为上下文管理器：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

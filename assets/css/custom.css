@@ -1,0 +1,14 @@
+
+.post-tags .post-tag:hover {
+    border-color: #007BFF; /* 鼠标悬停时的边框颜色 */
+    color: #007BFF; /* 鼠标悬停时的文字颜色 */
+}
+
+.post-tags .post-tag {
+    background: linear-gradient(45deg, #007BFF, #00C9FF); /* 渐变背景 */
+    color: white; /* 标签文字颜色 */
+    padding: 0px 10px; /* 内边距 */
+    border-radius: 5px; /* 圆角半径 */
+    text-decoration: none; /* 去除下划线 */
+    transition: transform 0.3s ease; /* 过渡效果 */
+}
