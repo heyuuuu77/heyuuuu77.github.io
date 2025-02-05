@@ -18,7 +18,11 @@
       <link>http://localhost:1313/posts/redis/</link>
       <pubDate>Wed, 05 Feb 2025 09:39:00 +0800</pubDate>
       <guid>http://localhost:1313/posts/redis/</guid>
-      <description>&lt;h4 id=&#34;heading&#34;&gt;&lt;/h4&gt;</description>
+      <description>&lt;h4 id=&#34;数据类型&#34;&gt;数据类型&lt;/h4&gt;
+&lt;p&gt;String: 字符串
+Hash: 哈希
+List: 列表
+Set: 集合&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
