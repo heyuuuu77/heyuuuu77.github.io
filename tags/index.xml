@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.141.0</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Feb 2025 11:09:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 08 Feb 2025 17:06:08 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo</title>
+      <link>https://heyuuuu77.github.io/tags/hugo/</link>
+      <pubDate>Sat, 08 Feb 2025 17:06:08 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Django</title>
       <link>https://heyuuuu77.github.io/tags/django/</link>
