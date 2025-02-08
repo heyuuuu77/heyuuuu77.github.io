@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on heyuuuu77</title>
-    <link>https://heyuuuu77.github.io:1313/posts/</link>
+    <link>https://heyuuuu77.github.io:8000/posts/</link>
     <description>Recent content in Posts on heyuuuu77</description>
     <image>
       <title>heyuuuu77</title>
-      <url>https://heyuuuu77.github.io:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://heyuuuu77.github.io:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://heyuuuu77.github.io:8000/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://heyuuuu77.github.io:8000/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.141.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 15 Jan 2025 11:30:03 +0000</lastBuildDate>
-    <atom:link href="https://heyuuuu77.github.io:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://heyuuuu77.github.io:8000/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
-      <link>https://heyuuuu77.github.io:1313/posts/music_list/</link>
+      <link>https://heyuuuu77.github.io:8000/posts/music_list/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>https://heyuuuu77.github.io:1313/posts/music_list/</guid>
+      <guid>https://heyuuuu77.github.io:8000/posts/music_list/</guid>
       <description>只是分享记录几首自己喜欢的音乐，支持正版音乐</description>
     </item>
     <item>
       <title>Python的一些知识点</title>
-      <link>https://heyuuuu77.github.io:1313/posts/python/</link>
+      <link>https://heyuuuu77.github.io:8000/posts/python/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>https://heyuuuu77.github.io:1313/posts/python/</guid>
+      <guid>https://heyuuuu77.github.io:8000/posts/python/</guid>
       <description>&lt;h4 id=&#34;python的数据类型&#34;&gt;Python的数据类型&lt;/h4&gt;
 &lt;p&gt;int: 整型
 float: 浮点型
