@@ -2,99 +2,99 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on heyuuuu77</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://heyuuuu77.github.io:1313/tags/</link>
     <description>Recent content in Tags on heyuuuu77</description>
     <image>
       <title>heyuuuu77</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://heyuuuu77.github.io:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://heyuuuu77.github.io:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.141.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 05 Feb 2025 11:09:45 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://heyuuuu77.github.io:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django</title>
-      <link>http://localhost:1313/tags/django/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/django/</link>
       <pubDate>Wed, 05 Feb 2025 11:09:45 +0800</pubDate>
-      <guid>http://localhost:1313/tags/django/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/django/</guid>
       <description></description>
     </item>
     <item>
       <title>单例模式</title>
-      <link>http://localhost:1313/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Wed, 05 Feb 2025 10:00:19 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>
       <title>工厂模式</title>
-      <link>http://localhost:1313/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Wed, 05 Feb 2025 10:00:19 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>
       <title>设计模式</title>
-      <link>http://localhost:1313/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Wed, 05 Feb 2025 10:00:19 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
       <description></description>
     </item>
     <item>
       <title>Redis</title>
-      <link>http://localhost:1313/tags/redis/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/redis/</link>
       <pubDate>Wed, 05 Feb 2025 09:39:00 +0800</pubDate>
-      <guid>http://localhost:1313/tags/redis/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/redis/</guid>
       <description></description>
     </item>
     <item>
       <title>FastAPI</title>
-      <link>http://localhost:1313/tags/fastapi/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/fastapi/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>http://localhost:1313/tags/fastapi/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/fastapi/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>http://localhost:1313/tags/python/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/python/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>http://localhost:1313/tags/python/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>歌单</title>
-      <link>http://localhost:1313/tags/%E6%AD%8C%E5%8D%95/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E6%AD%8C%E5%8D%95/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%E6%AD%8C%E5%8D%95/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E6%AD%8C%E5%8D%95/</guid>
       <description></description>
     </item>
     <item>
       <title>生成器</title>
-      <link>http://localhost:1313/tags/%E7%94%9F%E6%88%90%E5%99%A8/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E7%94%9F%E6%88%90%E5%99%A8/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%E7%94%9F%E6%88%90%E5%99%A8/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E7%94%9F%E6%88%90%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>装饰器</title>
-      <link>http://localhost:1313/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>迭代器</title>
-      <link>http://localhost:1313/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>http://localhost:1313/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>心理</title>
-      <link>http://localhost:1313/tags/%E5%BF%83%E7%90%86/</link>
+      <link>https://heyuuuu77.github.io:1313/tags/%E5%BF%83%E7%90%86/</link>
       <pubDate>Fri, 10 Jan 2025 10:36:43 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E5%BF%83%E7%90%86/</guid>
+      <guid>https://heyuuuu77.github.io:1313/tags/%E5%BF%83%E7%90%86/</guid>
       <description></description>
     </item>
   </channel>
