@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on heyuuuu77</title>
-    <link>/posts/</link>
+    <link>//localhost:1313/posts/</link>
     <description>Recent content in Posts on heyuuuu77</description>
     <image>
       <title>heyuuuu77</title>
-      <url>/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>//localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>//localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.141.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 05 Feb 2025 11:09:45 +0800</lastBuildDate>
-    <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
-      <link>/posts/music_list/</link>
+      <link>//localhost:1313/posts/music_list/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>/posts/music_list/</guid>
+      <guid>//localhost:1313/posts/music_list/</guid>
       <description>只是分享记录几首自己喜欢的音乐，支持正版音乐</description>
     </item>
     <item>
       <title>Django的常见问题</title>
-      <link>/posts/django/</link>
+      <link>//localhost:1313/posts/django/</link>
       <pubDate>Wed, 05 Feb 2025 11:09:45 +0800</pubDate>
-      <guid>/posts/django/</guid>
+      <guid>//localhost:1313/posts/django/</guid>
       <description>&lt;h4 id=&#34;什么是orm&#34;&gt;什么是ORM&lt;/h4&gt;
 &lt;p&gt;ORM 即对象关系映射，它将数据库中的表映射为 Python 类，将表中的记录映射为类的实例，通过操作类和实例来操作数据库。优点包括提高开发效率、可移植性强、安全性高（自动处理 SQL 注入）等。&lt;/p&gt;
 &lt;h4 id=&#34;什么是-n1问题&#34;&gt;什么是 N+1问题&lt;/h4&gt;
@@ -52,9 +52,9 @@
     </item>
     <item>
       <title>设计模式详解</title>
-      <link>/posts/design_pattern/</link>
+      <link>//localhost:1313/posts/design_pattern/</link>
       <pubDate>Wed, 05 Feb 2025 10:00:19 +0800</pubDate>
-      <guid>/posts/design_pattern/</guid>
+      <guid>//localhost:1313/posts/design_pattern/</guid>
       <description>&lt;p&gt;设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类&lt;/p&gt;
 &lt;h4 id=&#34;创建型&#34;&gt;创建型&lt;/h4&gt;
 &lt;ol&gt;
@@ -146,9 +146,9 @@ Python中的实现方式是通过__new__魔术方法实现。&lt;/li&gt;
     </item>
     <item>
       <title>Redis</title>
-      <link>/posts/redis/</link>
+      <link>//localhost:1313/posts/redis/</link>
       <pubDate>Wed, 05 Feb 2025 09:39:00 +0800</pubDate>
-      <guid>/posts/redis/</guid>
+      <guid>//localhost:1313/posts/redis/</guid>
       <description>&lt;h4 id=&#34;数据类型&#34;&gt;数据类型&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -179,9 +179,9 @@ Python中的实现方式是通过__new__魔术方法实现。&lt;/li&gt;
     </item>
     <item>
       <title>Python的一些知识点</title>
-      <link>/posts/python/</link>
+      <link>//localhost:1313/posts/python/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
-      <guid>/posts/python/</guid>
+      <guid>//localhost:1313/posts/python/</guid>
       <description>&lt;h4 id=&#34;python的数据类型&#34;&gt;Python的数据类型&lt;/h4&gt;
 &lt;p&gt;int: 整型
 float: 浮点型
@@ -207,9 +207,9 @@ NoneType: 只有一个值 None，通常用于表示变量没有值或函数没�
     </item>
     <item>
       <title>Hey</title>
-      <link>/posts/hey/</link>
+      <link>//localhost:1313/posts/hey/</link>
       <pubDate>Fri, 10 Jan 2025 10:36:43 +0800</pubDate>
-      <guid>/posts/hey/</guid>
+      <guid>//localhost:1313/posts/hey/</guid>
       <description>&lt;p&gt;hey&lt;/p&gt;</description>
     </item>
   </channel>
