@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.141.0</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 08 Feb 2025 17:06:08 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Feb 2025 10:20:34 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
@@ -19,6 +19,56 @@
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
       <guid>https://heyuuuu77.github.io/posts/music_list/</guid>
       <description>只是分享记录几首自己喜欢的音乐，支持正版音乐</description>
+    </item>
+    <item>
+      <title>Go语言实战笔记</title>
+      <link>https://heyuuuu77.github.io/posts/go/</link>
+      <pubDate>Thu, 13 Feb 2025 10:20:34 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/go/</guid>
+      <description>&lt;h5 id=&#34;引用类型&#34;&gt;引用类型&lt;/h5&gt;
+&lt;p&gt;通道(channel)、 映射(map)、 切片(slice)&lt;/p&gt;
+&lt;h4 id=&#34;sync&#34;&gt;sync&lt;/h4&gt;
+&lt;p&gt;sync 包提供同步 goroutine 的功能。 在Go语言中， main终止则代表了程序终止， main函数终止前还会关闭所有之前启动且运行的 goroutine。
+并发写程序时，最佳做法是 在main函数返回前，清理并终止所有之前启动的 goroutine。编写启动和终止都清晰的程序，减少bug，防止资源异常。&lt;/p&gt;
+&lt;p&gt;sync 包的 WaitGroup 会跟踪所有启动的 goroutine。 WaitGroup 是一个计数信号量，用来统计每个 goroutine 是否完成了工作。
+具体做法是: 将 WaitGroup 的变量值设置为要启动的 goroutine 数量。 每个 goroutine 完成工作后， 递减 WaitGroup 变量的计数值。
+当这个值为0，就知道所有的 goroutine 都完成了工作。&lt;/p&gt;
+&lt;h5 id=&#34;命名规范&#34;&gt;命名规范&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;命名接口时，如果接口内就一个方法，需要以 er 结尾。 如 Matcher。 如果接口类型内部声明了多个方法，其名字需要与其行为关联&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;最佳实践&#34;&gt;最佳实践&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;如果声明函数的时候带有接收者，则意味着声明了一个方法。这个方法会和指定的接收者类型绑定在一起。
+值类型和引用类型作为接收者的方法，在调用时编译器会自动编码/解码对应的类型，然后传递给方法。例如&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 方法声明为使用 defaultMatcher 类型的值作为接收者&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;defaultMatch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;feed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Feed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;stringTerm&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 声明一个指向 defaultMatcher类型值的指针&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;dm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;defaultMatch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 编译器会解开dm指针的引用，使用对应的值调用方法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;dm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;feed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 方法声明为使用指向defaultMatcher类型值的指针作为接收者&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;m&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;defaultMatcher&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;feed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Feed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;searchTerm&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 声明一个defaultMatcher类型的值&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;dm&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;defaultMatch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// 编译器会自动生成指针引用dm值，使用指针调用方法&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;dm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;feed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;test&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;”&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;与直接通过值或者指针调用不同， 如果通过接口类型的值调用方法，规则有很大不同。
+1. 使用指针作为接收者声明的方法，只能在接口类型的值是一个指针的时候被调用。
+2. 使用值作为接收者声明的方法，在接口类型的值为值或者指针时，都可以被调用。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kafka</title>
+      <link>https://heyuuuu77.github.io/posts/kafka/</link>
+      <pubDate>Wed, 12 Feb 2025 19:36:38 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/kafka/</guid>
+      <description></description>
     </item>
     <item>
       <title>Hugo</title>
