@@ -1,0 +1,111 @@
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>设计模式之美 | heyuuuu77</title>
+<meta name=keywords content><meta name=description content="面向对象
+面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。
+设计原则
+
+
+SOLID原则 - SRP 单一职责原则
+
+
+SOLID原则 - OCP 开闭原则(对扩展开放，对修改关闭)
+
+
+SOLID原则 - LSP 里式替换原则: 
+解释： 所有引用基类的地方必须能透明地使用其子类的对象，也就是说，子类对象可以替换掉它们的基类对象，而程序的行为不会发生改变。
+示例： 在一个游戏中有一个动物类，鸟类继承自动物类。如果在游戏中需要使用动物类的某个方法，那么使用鸟类对象来调用这个方法也应该能正常工作，并且不会出现意外的结果。
+
+
+SOLID原则 - ISP 接口隔离原则 
+解释： 客户端不应该依赖它不需要的接口，即一个接口应该只包含客户端真正需要的方法，而不应该包含一些无关的方法。
+示例： 在一个游戏开发中，有一个游戏控制器接口，其中只应该包含与游戏控制相关的方法，如开始游戏、暂停游戏等，而不应该包含与游戏画面渲染等无关的方法。
+
+
+SOLID原则 - DIP 依赖倒置原则 
+解释： 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象。即要针对接口编程，而不是针对实现编程。
+示例： 在一个游戏开发中，游戏的业务逻辑模块是高层模块，游戏的底层渲染模块是低层模块。业务逻辑模块不应该直接依赖底层渲染模块的具体实现，而是应该依赖一个抽象的渲染接口，底层渲染模块实现这个接口。这样，当需要更换底层渲染引擎时，只需要更换实现渲染接口的类，而不需要修改业务逻辑模块的代码。
+
+
+DRY原则(Don&rsquo;t repeat yourself)、 KISS原则、YAGNI原则(You Aren&rsquo;t Gonna Need It)、 LOD法则(Law of Demete)
+
+
+设计模式
+经典的23种设计模式，分为创建型，结构型，行为型。
+
+创建型: (5)
+常用 单例模式、工厂模式(工厂方法和抽象工厂)、建造者模式 (4)
+不常用 原型模式 (1)
+结构型: (7)
+常用 代理模式、 桥接模式、 装饰者模式、适配器模式 (4)
+不常用 门面模式、组合模式、享元模式 (3)
+行为型: (11)
+常用 观察者模式、模版模式、策略模式、责任链模式、迭代器模式、状态模式 (6)
+不常用 访问者模式、备忘录模式、命令模式、解释器模式、中介模式 (5)
+
+编程规范
+目的是为了提高代码的可读性。"><meta name=author content="Me"><link rel=canonical href=https://heyuuuu77.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as=style><link rel=stylesheet href=https://heyuuuu77.github.io/assets/css/custom.css><script src=https://heyuuuu77.github.io/assets/js/random-gradient.js></script><link rel=icon href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://heyuuuu77.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://heyuuuu77.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/"><meta property="og:site_name" content="heyuuuu77"><meta property="og:title" content="设计模式之美"><meta property="og:description" content="面向对象 面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。
+设计原则 SOLID原则 - SRP 单一职责原则
+SOLID原则 - OCP 开闭原则(对扩展开放，对修改关闭)
+SOLID原则 - LSP 里式替换原则: 解释： 所有引用基类的地方必须能透明地使用其子类的对象，也就是说，子类对象可以替换掉它们的基类对象，而程序的行为不会发生改变。
+示例： 在一个游戏中有一个动物类，鸟类继承自动物类。如果在游戏中需要使用动物类的某个方法，那么使用鸟类对象来调用这个方法也应该能正常工作，并且不会出现意外的结果。
+SOLID原则 - ISP 接口隔离原则 解释： 客户端不应该依赖它不需要的接口，即一个接口应该只包含客户端真正需要的方法，而不应该包含一些无关的方法。
+示例： 在一个游戏开发中，有一个游戏控制器接口，其中只应该包含与游戏控制相关的方法，如开始游戏、暂停游戏等，而不应该包含与游戏画面渲染等无关的方法。
+SOLID原则 - DIP 依赖倒置原则 解释： 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象。即要针对接口编程，而不是针对实现编程。
+示例： 在一个游戏开发中，游戏的业务逻辑模块是高层模块，游戏的底层渲染模块是低层模块。业务逻辑模块不应该直接依赖底层渲染模块的具体实现，而是应该依赖一个抽象的渲染接口，底层渲染模块实现这个接口。这样，当需要更换底层渲染引擎时，只需要更换实现渲染接口的类，而不需要修改业务逻辑模块的代码。
+DRY原则(Don’t repeat yourself)、 KISS原则、YAGNI原则(You Aren’t Gonna Need It)、 LOD法则(Law of Demete)
+设计模式 经典的23种设计模式，分为创建型，结构型，行为型。
+创建型: (5) 常用 单例模式、工厂模式(工厂方法和抽象工厂)、建造者模式 (4) 不常用 原型模式 (1) 结构型: (7) 常用 代理模式、 桥接模式、 装饰者模式、适配器模式 (4) 不常用 门面模式、组合模式、享元模式 (3) 行为型: (11) 常用 观察者模式、模版模式、策略模式、责任链模式、迭代器模式、状态模式 (6) 不常用 访问者模式、备忘录模式、命令模式、解释器模式、中介模式 (5) 编程规范 目的是为了提高代码的可读性。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-02-14T09:32:22+08:00"><meta property="article:modified_time" content="2025-02-14T09:32:22+08:00"><meta property="og:image" content="https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="设计模式之美"><meta name=twitter:description content="面向对象
+面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。
+设计原则
+
+
+SOLID原则 - SRP 单一职责原则
+
+
+SOLID原则 - OCP 开闭原则(对扩展开放，对修改关闭)
+
+
+SOLID原则 - LSP 里式替换原则: 
+解释： 所有引用基类的地方必须能透明地使用其子类的对象，也就是说，子类对象可以替换掉它们的基类对象，而程序的行为不会发生改变。
+示例： 在一个游戏中有一个动物类，鸟类继承自动物类。如果在游戏中需要使用动物类的某个方法，那么使用鸟类对象来调用这个方法也应该能正常工作，并且不会出现意外的结果。
+
+
+SOLID原则 - ISP 接口隔离原则 
+解释： 客户端不应该依赖它不需要的接口，即一个接口应该只包含客户端真正需要的方法，而不应该包含一些无关的方法。
+示例： 在一个游戏开发中，有一个游戏控制器接口，其中只应该包含与游戏控制相关的方法，如开始游戏、暂停游戏等，而不应该包含与游戏画面渲染等无关的方法。
+
+
+SOLID原则 - DIP 依赖倒置原则 
+解释： 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象。即要针对接口编程，而不是针对实现编程。
+示例： 在一个游戏开发中，游戏的业务逻辑模块是高层模块，游戏的底层渲染模块是低层模块。业务逻辑模块不应该直接依赖底层渲染模块的具体实现，而是应该依赖一个抽象的渲染接口，底层渲染模块实现这个接口。这样，当需要更换底层渲染引擎时，只需要更换实现渲染接口的类，而不需要修改业务逻辑模块的代码。
+
+
+DRY原则(Don&rsquo;t repeat yourself)、 KISS原则、YAGNI原则(You Aren&rsquo;t Gonna Need It)、 LOD法则(Law of Demete)
+
+
+设计模式
+经典的23种设计模式，分为创建型，结构型，行为型。
+
+创建型: (5)
+常用 单例模式、工厂模式(工厂方法和抽象工厂)、建造者模式 (4)
+不常用 原型模式 (1)
+结构型: (7)
+常用 代理模式、 桥接模式、 装饰者模式、适配器模式 (4)
+不常用 门面模式、组合模式、享元模式 (3)
+行为型: (11)
+常用 观察者模式、模版模式、策略模式、责任链模式、迭代器模式、状态模式 (6)
+不常用 访问者模式、备忘录模式、命令模式、解释器模式、中介模式 (5)
+
+编程规范
+目的是为了提高代码的可读性。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://heyuuuu77.github.io/posts/"},{"@type":"ListItem","position":2,"name":"设计模式之美","item":"https://heyuuuu77.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"设计模式之美","name":"设计模式之美","description":"面向对象 面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。\n设计原则 SOLID原则 - SRP 单一职责原则\nSOLID原则 - OCP 开闭原则(对扩展开放，对修改关闭)\nSOLID原则 - LSP 里式替换原则: 解释： 所有引用基类的地方必须能透明地使用其子类的对象，也就是说，子类对象可以替换掉它们的基类对象，而程序的行为不会发生改变。\n示例： 在一个游戏中有一个动物类，鸟类继承自动物类。如果在游戏中需要使用动物类的某个方法，那么使用鸟类对象来调用这个方法也应该能正常工作，并且不会出现意外的结果。\nSOLID原则 - ISP 接口隔离原则 解释： 客户端不应该依赖它不需要的接口，即一个接口应该只包含客户端真正需要的方法，而不应该包含一些无关的方法。\n示例： 在一个游戏开发中，有一个游戏控制器接口，其中只应该包含与游戏控制相关的方法，如开始游戏、暂停游戏等，而不应该包含与游戏画面渲染等无关的方法。\nSOLID原则 - DIP 依赖倒置原则 解释： 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象。即要针对接口编程，而不是针对实现编程。\n示例： 在一个游戏开发中，游戏的业务逻辑模块是高层模块，游戏的底层渲染模块是低层模块。业务逻辑模块不应该直接依赖底层渲染模块的具体实现，而是应该依赖一个抽象的渲染接口，底层渲染模块实现这个接口。这样，当需要更换底层渲染引擎时，只需要更换实现渲染接口的类，而不需要修改业务逻辑模块的代码。\nDRY原则(Don\u0026rsquo;t repeat yourself)、 KISS原则、YAGNI原则(You Aren\u0026rsquo;t Gonna Need It)、 LOD法则(Law of Demete)\n设计模式 经典的23种设计模式，分为创建型，结构型，行为型。\n创建型: (5) 常用 单例模式、工厂模式(工厂方法和抽象工厂)、建造者模式 (4) 不常用 原型模式 (1) 结构型: (7) 常用 代理模式、 桥接模式、 装饰者模式、适配器模式 (4) 不常用 门面模式、组合模式、享元模式 (3) 行为型: (11) 常用 观察者模式、模版模式、策略模式、责任链模式、迭代器模式、状态模式 (6) 不常用 访问者模式、备忘录模式、命令模式、解释器模式、中介模式 (5) 编程规范 目的是为了提高代码的可读性。\n","keywords":[],"articleBody":"面向对象 面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。\n设计原则 SOLID原则 - SRP 单一职责原则\nSOLID原则 - OCP 开闭原则(对扩展开放，对修改关闭)\nSOLID原则 - LSP 里式替换原则: 解释： 所有引用基类的地方必须能透明地使用其子类的对象，也就是说，子类对象可以替换掉它们的基类对象，而程序的行为不会发生改变。\n示例： 在一个游戏中有一个动物类，鸟类继承自动物类。如果在游戏中需要使用动物类的某个方法，那么使用鸟类对象来调用这个方法也应该能正常工作，并且不会出现意外的结果。\nSOLID原则 - ISP 接口隔离原则 解释： 客户端不应该依赖它不需要的接口，即一个接口应该只包含客户端真正需要的方法，而不应该包含一些无关的方法。\n示例： 在一个游戏开发中，有一个游戏控制器接口，其中只应该包含与游戏控制相关的方法，如开始游戏、暂停游戏等，而不应该包含与游戏画面渲染等无关的方法。\nSOLID原则 - DIP 依赖倒置原则 解释： 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象。即要针对接口编程，而不是针对实现编程。\n示例： 在一个游戏开发中，游戏的业务逻辑模块是高层模块，游戏的底层渲染模块是低层模块。业务逻辑模块不应该直接依赖底层渲染模块的具体实现，而是应该依赖一个抽象的渲染接口，底层渲染模块实现这个接口。这样，当需要更换底层渲染引擎时，只需要更换实现渲染接口的类，而不需要修改业务逻辑模块的代码。\nDRY原则(Don’t repeat yourself)、 KISS原则、YAGNI原则(You Aren’t Gonna Need It)、 LOD法则(Law of Demete)\n设计模式 经典的23种设计模式，分为创建型，结构型，行为型。\n创建型: (5) 常用 单例模式、工厂模式(工厂方法和抽象工厂)、建造者模式 (4) 不常用 原型模式 (1) 结构型: (7) 常用 代理模式、 桥接模式、 装饰者模式、适配器模式 (4) 不常用 门面模式、组合模式、享元模式 (3) 行为型: (11) 常用 观察者模式、模版模式、策略模式、责任链模式、迭代器模式、状态模式 (6) 不常用 访问者模式、备忘录模式、命令模式、解释器模式、中介模式 (5) 编程规范 目的是为了提高代码的可读性。\n代码重构 为了避免过度设计，程序初期不应该运用太复杂的设计模式，保留很多扩展性插槽。但是后期业务逻辑复杂度变高，就要不断的去重构，优化自身的代码。 可以分成两部分， 大重构是整体结构，设计模式的替换之类的重构。小重构包括函数重命名，逻辑优化之类的小规模低层次的优化。\n","wordCount":"80","inLanguage":"en","image":"https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2025-02-14T09:32:22+08:00","dateModified":"2025-02-14T09:32:22+08:00","author":{"@type":"Person","name":"Me"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://heyuuuu77.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/"},"publisher":{"@type":"Organization","name":"heyuuuu77","logo":{"@type":"ImageObject","url":"https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://heyuuuu77.github.io/ accesskey=h title="Home (Alt + H)"><img src=https://heyuuuu77.github.io/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://heyuuuu77.github.io/categories title=categories><span>categories</span></a></li><li><a href=https://heyuuuu77.github.io/posts/ title=Posts><span>Posts</span></a></li><li><a href=https://heyuuuu77.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://example.org title=example.org><span>example.org</span>&nbsp;<svg fill="none" shape-rendering="geometricPrecision" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://heyuuuu77.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://heyuuuu77.github.io/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">设计模式之美</h1><div class=post-meta><span title='2025-02-14 09:32:22 +0800 CST'>February 14, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;80 words&nbsp;·&nbsp;Me&nbsp;|&nbsp;<a href=https://github.com/%3cpath_to_repo%3e/content/posts/%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e4%b9%8b%e7%be%8e.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div><hr><ul class=post-tags></ul></header><div class=post-content><h4 id=面向对象>面向对象<a hidden class=anchor aria-hidden=true href=#面向对象>#</a></h4><p>面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。</p><h4 id=设计原则>设计原则<a hidden class=anchor aria-hidden=true href=#设计原则>#</a></h4><ol><li><p>SOLID原则 - SRP 单一职责原则</p></li><li><p>SOLID原则 - OCP 开闭原则(对扩展开放，对修改关闭)</p></li><li><p>SOLID原则 - LSP 里式替换原则:<br><strong>解释：</strong> 所有引用基类的地方必须能透明地使用其子类的对象，也就是说，子类对象可以替换掉它们的基类对象，而程序的行为不会发生改变。<br><strong>示例：</strong> 在一个游戏中有一个动物类，鸟类继承自动物类。如果在游戏中需要使用动物类的某个方法，那么使用鸟类对象来调用这个方法也应该能正常工作，并且不会出现意外的结果。</p></li><li><p>SOLID原则 - ISP 接口隔离原则<br><strong>解释：</strong> 客户端不应该依赖它不需要的接口，即一个接口应该只包含客户端真正需要的方法，而不应该包含一些无关的方法。<br><strong>示例：</strong> 在一个游戏开发中，有一个游戏控制器接口，其中只应该包含与游戏控制相关的方法，如开始游戏、暂停游戏等，而不应该包含与游戏画面渲染等无关的方法。</p></li><li><p>SOLID原则 - DIP 依赖倒置原则<br><strong>解释：</strong> 高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象。即要针对接口编程，而不是针对实现编程。<br><strong>示例：</strong> 在一个游戏开发中，游戏的业务逻辑模块是高层模块，游戏的底层渲染模块是低层模块。业务逻辑模块不应该直接依赖底层渲染模块的具体实现，而是应该依赖一个抽象的渲染接口，底层渲染模块实现这个接口。这样，当需要更换底层渲染引擎时，只需要更换实现渲染接口的类，而不需要修改业务逻辑模块的代码。</p></li><li><p>DRY原则(Don&rsquo;t repeat yourself)、 KISS原则、YAGNI原则(You Aren&rsquo;t Gonna Need It)、 LOD法则(Law of Demete)</p></li></ol><h4 id=设计模式>设计模式<a hidden class=anchor aria-hidden=true href=#设计模式>#</a></h4><p>经典的23种设计模式，分为创建型，结构型，行为型。</p><ol><li>创建型: (5)
+<strong>常用</strong> 单例模式、工厂模式(工厂方法和抽象工厂)、建造者模式 (4)
+<strong>不常用</strong> 原型模式 (1)</li><li>结构型: (7)
+<strong>常用</strong> 代理模式、 桥接模式、 装饰者模式、适配器模式 (4)
+<strong>不常用</strong> 门面模式、组合模式、享元模式 (3)</li><li>行为型: (11)
+<strong>常用</strong> 观察者模式、模版模式、策略模式、责任链模式、迭代器模式、状态模式 (6)
+<strong>不常用</strong> 访问者模式、备忘录模式、命令模式、解释器模式、中介模式 (5)</li></ol><h4 id=编程规范>编程规范<a hidden class=anchor aria-hidden=true href=#编程规范>#</a></h4><p>目的是为了提高代码的可读性。</p><h4 id=代码重构>代码重构<a hidden class=anchor aria-hidden=true href=#代码重构>#</a></h4><p>为了避免过度设计，程序初期不应该运用太复杂的设计模式，保留很多扩展性插槽。但是后期业务逻辑复杂度变高，就要不断的去重构，优化自身的代码。
+可以分成两部分，
+大重构是整体结构，设计模式的替换之类的重构。小重构包括函数重命名，逻辑优化之类的小规模低层次的优化。</p><p><img alt=示例图片 loading=lazy src=/images/design_pattern.jpg></p></div></article></main><footer class=footer><span>&copy; 2025 <a href=https://heyuuuu77.github.io/>heyuuuu77</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
