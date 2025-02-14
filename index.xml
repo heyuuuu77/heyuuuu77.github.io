@@ -51,7 +51,7 @@
 &lt;strong&gt;示例：&lt;/strong&gt; 在一个游戏开发中，游戏的业务逻辑模块是高层模块，游戏的底层渲染模块是低层模块。业务逻辑模块不应该直接依赖底层渲染模块的具体实现，而是应该依赖一个抽象的渲染接口，底层渲染模块实现这个接口。这样，当需要更换底层渲染引擎时，只需要更换实现渲染接口的类，而不需要修改业务逻辑模块的代码。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;DRY原则(Don&amp;rsquo;t repeat yourself)、 KISS原则、YAGNI原则(You Aren&amp;rsquo;t Gonna Need It)、 LOD法则(Law of Demete)&lt;/p&gt;
+&lt;p&gt;DRY原则(Don&amp;rsquo;t Repeat Yourself)、 KISS原则、 YAGNI原则(You Aren&amp;rsquo;t Gonna Need It)、 LOD法则(Law Of Demete)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;设计模式&#34;&gt;设计模式&lt;/h4&gt;
