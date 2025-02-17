@@ -61,7 +61,6 @@ NoneType: 只有一个值 None，通常用于表示变量没有值或函数没�
 </code></pre><p>open(&rsquo;example.json&rsquo;, &lsquo;r&rsquo;) 会创建一个文件对象，它就是一个上下文管理器。进入with语句时，文件被打开。当with语句结束时，文件会自动关闭。就算读取文件过程中发生异常，文件也会被正常关闭。
 下面是数据库上下文管理器示例：</p><pre tabindex=0><code>import sqlite3
 
-
 class DatabaseConnection:
     def __init__(self, db_name):
         self.db_name = db_name
