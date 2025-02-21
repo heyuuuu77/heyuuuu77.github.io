@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.141.0</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 14 Feb 2025 09:32:22 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 08:46:57 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
@@ -19,6 +19,30 @@
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
       <guid>https://heyuuuu77.github.io/posts/music_list/</guid>
       <description>只是分享记录几首自己喜欢的音乐，支持正版音乐</description>
+    </item>
+    <item>
+      <title>分布式系统</title>
+      <link>https://heyuuuu77.github.io/posts/distributed_system/</link>
+      <pubDate>Fri, 21 Feb 2025 08:46:57 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/distributed_system/</guid>
+      <description>&lt;h3 id=&#34;名词解释&#34;&gt;名词解释&lt;/h3&gt;
+&lt;h4 id=&#34;cap理论&#34;&gt;CAP理论&lt;/h4&gt;
+&lt;p&gt;该理论指出，一个分布式系统不可能同时满足一下三个特性:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一致性(Consistency): 所有节点同一时间看到的数据是相同的。也就是说，当一个数据更新操作在系统的某个节点上执行成功后，在后续的任何节点上进行数据读取操作时，都能获取到更新后的值。&lt;/li&gt;
+&lt;li&gt;可用性(Availability): 系统中的每一个非故障节点都能在合理的时间内响应客户端的请求。即无论何时，客户端发起的请求都能得到响应，不会出现系统不可用的情况。&lt;/li&gt;
+&lt;li&gt;分区容错性(Partition tolerance): 系统在遇到任何网络分区故障时，仍然能够保证对外提供满足一致性或可用性的服务。网络分区是指由于网络问题导致部分节点之间无法通信。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;理解&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;在分布式系统中，由于网络的不确定性，分区容错性是必须要考虑的因素，也就是 P 是必然存在的。因此，在实际应用中，通常需要在一致性（C）和可用性（A）之间做出权衡&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;CP 系统&lt;/em&gt;：优先保证一致性和分区容错性，牺牲部分可用性。例如，ZooKeeper 就是一个典型的 CP 系统，当发生网络分区时，为了保证数据的一致性，系统可能会暂时不可用，直到分区问题解决。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;AP 系统&lt;/em&gt;：优先保证可用性和分区容错性，牺牲部分一致性。比如，Amazon 的 Dynamo 系统，它允许在不同节点上的数据存在短暂的不一致，但保证系统始终可以响应客户端的请求。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     <item>
       <title>设计模式之美</title>
