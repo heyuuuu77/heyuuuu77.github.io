@@ -374,15 +374,17 @@ Python中的实现方式是通过__new__魔术方法实现。&lt;/li&gt;
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
       <guid>https://heyuuuu77.github.io/posts/python/</guid>
       <description>&lt;h4 id=&#34;python的数据类型&#34;&gt;Python的数据类型&lt;/h4&gt;
-&lt;p&gt;int: 整型
-float: 浮点型
-bool: 布尔值
-str: 字符串
-list: 列表，是一种可变的、有序的序列，可以包含不同类型的元素。使用方括号 [] 来定义。
-tuple: 元祖，是一种不可变的、有序的序列，一旦创建，其元素不能被修改。使用圆括号 () 来定义。
-set: 集合，是一种无序的、唯一的数据集合，不允许有重复的元素。使用花括号 {} 或 set() 函数来定义
-dict: 字典，是一种无序的键值对集合，每个键必须是唯一的，且键必须是可哈希的数据类型（如整数、字符串、元组等）。使用花括号 {} 来定义，键和值之间用冒号 : 分隔
-NoneType: 只有一个值 None，通常用于表示变量没有值或函数没有返回值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int: 整型&lt;/li&gt;
+&lt;li&gt;float: 浮点型&lt;/li&gt;
+&lt;li&gt;bool: 布尔值&lt;/li&gt;
+&lt;li&gt;str: 字符串&lt;/li&gt;
+&lt;li&gt;list: 列表，是一种可变的、有序的序列，可以包含不同类型的元素。使用方括号 [] 来定义。&lt;/li&gt;
+&lt;li&gt;tuple: 元祖，是一种不可变的、有序的序列，一旦创建，其元素不能被修改。使用圆括号 () 来定义。&lt;/li&gt;
+&lt;li&gt;set: 集合，是一种无序的、唯一的数据集合，不允许有重复的元素。使用花括号 {} 或 set() 函数来定义&lt;/li&gt;
+&lt;li&gt;dict: 字典，是一种无序的键值对集合，每个键必须是唯一的，且键必须是可哈希的数据类型（如整数、字符串、元组等）。使用花括号 {} 来定义，键和值之间用冒号 : 分隔&lt;/li&gt;
+&lt;li&gt;NoneType: 只有一个值 None，通常用于表示变量没有值或函数没有返回值。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h4 id=&#34;list列表-与-tuple元祖-的区别&#34;&gt;List(列表) 与 Tuple(元祖) 的区别&lt;/h4&gt;
 &lt;p&gt;List 可变，通过可以通过索引修改、添加或删除， 使用[]定义。 Tuple不可变，使用()定义。&lt;/p&gt;
 &lt;h4 id=&#34;可迭代对象&#34;&gt;可迭代对象&lt;/h4&gt;
