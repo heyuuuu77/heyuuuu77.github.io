@@ -4,7 +4,9 @@
 一致性(Consistency): 所有节点同一时间看到的数据是相同的。也就是说，当一个数据更新操作在系统的某个节点上执行成功后，在后续的任何节点上进行数据读取操作时，都能获取到更新后的值。 可用性(Availability): 系统中的每一个非故障节点都能在合理的时间内响应客户端的请求。即无论何时，客户端发起的请求都能得到响应，不会出现系统不可用的情况。 分区容错性(Partition tolerance): 系统在遇到任何网络分区故障时，仍然能够保证对外提供满足一致性或可用性的服务。网络分区是指由于网络问题导致部分节点之间无法通信。 理解
 在分布式系统中，由于网络的不确定性，分区容错性是必须要考虑的因素，也就是 P 是必然存在的。因此，在实际应用中，通常需要在一致性（C）和可用性（A）之间做出权衡
 CP 系统：优先保证一致性和分区容错性，牺牲部分可用性。例如，ZooKeeper 就是一个典型的 CP 系统，当发生网络分区时，为了保证数据的一致性，系统可能会暂时不可用，直到分区问题解决。
-AP 系统：优先保证可用性和分区容错性，牺牲部分一致性。比如，Amazon 的 Dynamo 系统，它允许在不同节点上的数据存在短暂的不一致，但保证系统始终可以响应客户端的请求。</p></div><footer class=entry-footer><span title='2025-02-21 08:46:57 +0800 CST'>February 21, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;24 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to 分布式系统" href=https://heyuuuu77.github.io/posts/distributed_system/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>设计模式之美</h2></header><div class=entry-content><p>面向对象 面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。
+AP 系统：优先保证可用性和分区容错性，牺牲部分一致性。比如，Amazon 的 Dynamo 系统，它允许在不同节点上的数据存在短暂的不一致，但保证系统始终可以响应客户端的请求。
+BASE理论 定义 是对 CAP 理论中 AP 方案的一个扩展和延伸，它的核心思想是即使无法做到强一致性，但每个应用都可以根据自身的业务特点，采用适当的方式来使系统达到最终一致性。BASE 是三个短语的缩写：
+基本可用（Basically Available）：指分布式系统在出现故障时，允许损失部分可用性，即保证核心功能可用，但可能会出现响应时间延长、服务降级等情况。例如，在电商大促期间，系统可能会对一些非核心业务功能进行限流，以保证核心的交易功能正常运行。 软状态（Soft state）：允许系统中的数据存在中间状态，并且这种中间状态不会影响系统的整体可用性。也就是说，系统中的数据可以在一段时间内处于不一致的状态。 最终一致性（Eventual consistency）：系统中的所有数据副本，在经过一段时间的同步后，最终能够达到一致的状态。最终一致性是 BASE 理论的核心，它强调的是数据在一段时间后会达到一致，而不是实时一致。</p></div><footer class=entry-footer><span title='2025-02-21 08:46:57 +0800 CST'>February 21, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;40 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to 分布式系统" href=https://heyuuuu77.github.io/posts/distributed_system/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>设计模式之美</h2></header><div class=entry-content><p>面向对象 面向对象编程是因为其具有丰富的特性(封装，抽象，继承，多态)，可以实现很多复杂的设计思路。
 设计原则 SOLID原则 - SRP 单一职责原则
 SOLID原则 - OCP 开闭原则(对扩展开放，对修改关闭)
 SOLID原则 - LSP 里式替换原则: 解释： 所有引用基类的地方必须能透明地使用其子类的对象，也就是说，子类对象可以替换掉它们的基类对象，而程序的行为不会发生改变。
