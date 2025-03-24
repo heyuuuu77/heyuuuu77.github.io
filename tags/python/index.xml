@@ -9,10 +9,26 @@
       <url>https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.141.0</generator>
+    <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 15 Jan 2025 11:30:03 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 11:43:50 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python版本控制工具 UV</title>
+      <link>https://heyuuuu77.github.io/posts/python_uv/</link>
+      <pubDate>Mon, 24 Mar 2025 11:43:50 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/python_uv/</guid>
+      <description>&lt;h2 id=&#34;uv&#34;&gt;UV&lt;/h2&gt;
+&lt;p&gt;官网&lt;a href=&#34;https://docs.astral.sh/uv/&#34;&gt;地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一个很好用的python项目管理工具，以下是一些常见命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;uv init [example]  可以初始化项目,会自动创建example floder&lt;/li&gt;
+&lt;li&gt;uv install python [version] 可以安装python版本。&lt;/li&gt;
+&lt;li&gt;uv install 即可根据 uv.lock 文件安装依赖&lt;/li&gt;
+&lt;li&gt;uv python list 显示 python 版本&lt;/li&gt;
+&lt;li&gt;uv venv &amp;ndash;python 3.12.0  可以创建python的虚拟环境&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Python的一些知识点</title>
       <link>https://heyuuuu77.github.io/posts/python/</link>
