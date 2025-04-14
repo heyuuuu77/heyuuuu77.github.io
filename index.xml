@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Mar 2025 11:43:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Apr 2025 09:53:08 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
@@ -19,6 +19,49 @@
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
       <guid>https://heyuuuu77.github.io/posts/music_list/</guid>
       <description>只是分享记录几首自己喜欢的音乐，支持正版音乐</description>
+    </item>
+    <item>
+      <title>Advertiser</title>
+      <link>https://heyuuuu77.github.io/posts/advertiser/</link>
+      <pubDate>Mon, 14 Apr 2025 09:53:08 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/advertiser/</guid>
+      <description>&lt;h4 id=&#34;广告的计费模式有哪几种&#34;&gt;广告的计费模式有哪几种&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;CPM (Cost Per Mile)千次展示计费&lt;/li&gt;
+&lt;li&gt;CPC (Cost Per Click) 点击收费&lt;/li&gt;
+&lt;li&gt;CPA (Cost Per Action) 行动收费 广告主在用户完成某个特定行为才会支付费用&lt;/li&gt;
+&lt;li&gt;CTP (Cost Per Time) 按时长收费&lt;/li&gt;
+&lt;li&gt;CPI (Cost Per Install) 按安装收费等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;现代广告系统架构&#34;&gt;现代广告系统架构&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;广告投放平台（DSP, Demand-Side Platform） 广告主通过DSP进行投放，DSP负责竞价，定向，优化等功能&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;供应方平台（SSP, Supply-Side Platform） 媒体方通过SSP管理广告库存，广告库存就是广告位。如果自己开发一个app，想接广告。不需要自己找广告主，直接把广告位卖给SSP就行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;广告交易市场(Ad Exchange), 一个开发的广告竞价平台，链接DSP和SSP。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据管理平台(DMP, Data Managerment Platform), 收集，分析用户数据，提高广告定向能力等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;广告监测平台(Ad Monitor), 监测广告投放效果，比如广告投放的曝光量，点击量，转化等，归因分析。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Tcp_udp</title>
+      <link>https://heyuuuu77.github.io/posts/tcp_udp/</link>
+      <pubDate>Wed, 26 Mar 2025 17:17:34 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/tcp_udp/</guid>
+      <description>&lt;p&gt;TCP/IP是一个协议簇，tcp协议(传输控制协议)，udp协议(用户数据协议)都包含在其中，还有http(超文本传输协议), ftp(文本传输协议), telnet(远程登录协议)等&lt;/p&gt;
+&lt;p&gt;先说一下TCP/IP协议的4层协议模型，至上向下依次是：应用层,传输层，网络层，网络接口层。
+扩展成 OSI协议的7层协议模型，是把 应用层拆分成应用层，会话层，表示层。 网络接口层拆分为 数据链路层，物理层&lt;/p&gt;
+&lt;p&gt;tcp协议可以理解成可靠数据传输协议，面向连接的协议。 建立tcp连接需要3次握手，断开需要4次挥手。
+udp不需要提前建立连接，是面向无连接的协议，只顾往网络上传输，接收端自己从消息队列中获取，只是尽可能发送。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python版本控制工具 UV</title>
@@ -125,7 +168,38 @@ OLAP数据库被称为数据仓库(数仓), 它是反范式的。数据冗余度
 &lt;li&gt;基本可用（Basically Available）：指分布式系统在出现故障时，允许损失部分可用性，即保证核心功能可用，但可能会出现响应时间延长、服务降级等情况。例如，在电商大促期间，系统可能会对一些非核心业务功能进行限流，以保证核心的交易功能正常运行。&lt;/li&gt;
 &lt;li&gt;软状态（Soft state）：允许系统中的数据存在中间状态，并且这种中间状态不会影响系统的整体可用性。也就是说，系统中的数据可以在一段时间内处于不一致的状态。&lt;/li&gt;
 &lt;li&gt;最终一致性（Eventual consistency）：系统中的所有数据副本，在经过一段时间的同步后，最终能够达到一致的状态。最终一致性是 BASE 理论的核心，它强调的是数据在一段时间后会达到一致，而不是实时一致。&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;/ul&gt;
+&lt;h3 id=&#34;分布式框架&#34;&gt;分布式框架&lt;/h3&gt;
+&lt;h4 id=&#34;spring-cloud&#34;&gt;Spring Cloud&lt;/h4&gt;
+&lt;h4 id=&#34;dubbo&#34;&gt;Dubbo&lt;/h4&gt;
+&lt;h4 id=&#34;grpc&#34;&gt;gRPC&lt;/h4&gt;
+&lt;p&gt;高性能远程过程调用框架。流式传输，支持四种流式传输模式：客户端流式，服务器流式，双向流失，RPC非流式。
+protobuf 序列化协议，跨语言，Protobuf 编译器可以根据定义文件自动生成不同语言的客户端和服务器代码，减少了手动编写代码的工作量。&lt;/p&gt;
+&lt;h4 id=&#34;etcd&#34;&gt;etcd&lt;/h4&gt;
+&lt;p&gt;高可用的分布式键值存储系统，可用于配置共享和服务发现&lt;/p&gt;
+&lt;h4 id=&#34;如何搭建一个支持高并发的系统&#34;&gt;如何搭建一个支持高并发的系统&lt;/h4&gt;
+&lt;p&gt;首先从多方面去考虑，&lt;/p&gt;
+&lt;h5 id=&#34;分布式选型&#34;&gt;分布式选型&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;横向扩展: K8S部署多个服务示例，Nginx负载均衡，K8S HPA可以自动弹性扩缩容。&lt;/li&gt;
+&lt;li&gt;服务拆分: 微服务拆分&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;主流的rpc框架&#34;&gt;主流的RPC框架&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Apache Dubbo
+阿里开源&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;gRPC
+google 开源。 protobuf支持&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;分布式计算框架&#34;&gt;分布式计算框架&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Hadoop MapReduce
+日志分析、ETL等离线任务。&lt;/p&gt;</description>
     </item>
     <item>
       <title>设计模式之美</title>
