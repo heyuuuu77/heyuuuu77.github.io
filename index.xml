@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Jun 2025 14:43:01 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 06 Jun 2025 15:53:55 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
@@ -19,6 +19,13 @@
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
       <guid>https://heyuuuu77.github.io/posts/music_list/</guid>
       <description>只是分享记录几首自己喜欢的音乐，支持正版音乐</description>
+    </item>
+    <item>
+      <title>Tree</title>
+      <link>https://heyuuuu77.github.io/posts/tree/</link>
+      <pubDate>Fri, 06 Jun 2025 15:53:55 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/tree/</guid>
+      <description>&lt;h3&gt;&lt;/h3&gt;</description>
     </item>
     <item>
       <title>记录一次curl的报错</title>
@@ -535,14 +542,23 @@ Python中的实现方式是通过__new__魔术方法实现。&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;List: 列表&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;常见命令:
+LPUSH RPUSH LPOP RPOP LINDEX LRANGE LTRIM 等
+是一个有序，可以重复的线性数据接口，基于双向链表，支持快速的插入和删除操作。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;LPUSH key value [value &amp;hellip;]：将一个或多个值插入到列表的头部。&lt;/li&gt;
+&lt;li&gt;RPUSH key value [value &amp;hellip;]：将一个或多个值插入到列表的尾部。&lt;/li&gt;
+&lt;li&gt;LPOP key：移除并返回列表的第一个元素。&lt;/li&gt;
+&lt;li&gt;RPOP key：移除并返回列表的最后一个元素。&lt;/li&gt;
+&lt;li&gt;LINDEX key index：返回列表中指定索引的元素。&lt;/li&gt;
+&lt;li&gt;LRANGE key start stop：返回列表中指定范围内的元素。&lt;/li&gt;
+&lt;li&gt;LTRIM key start stop：截取列表，只保留指定范围内的元素。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Set: 集合&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Sorted Set: 有序集合&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>
+&lt;p&gt;消息队列: FIFO (First In First Out)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Python的一些知识点</title>

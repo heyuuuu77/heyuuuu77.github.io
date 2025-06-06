@@ -3,8 +3,9 @@
 <a href=/tags/redis/index.xml title=RSS aria-label=RSS><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a></h1></header><article class="post-entry tag-entry"><header class=entry-header><h2 class=entry-hint-parent>Redis</h2></header><div class=entry-content><p>数据类型 String: 字符串
 Hash: 哈希, 是一个键值对集合，类似于 Python 中的字典。适合存储对象，一个哈希可以包含多个字段和对应的值，每个哈希最多可存储2^32 -1个键值对。
 常见命令: 设置单个字段值：HSET key field value，例如 HSET user:1 name “Bob”。 获取单个字段值：HGET key field，例如 HGET user:1 name 会返回 “Bob”。 获取所有字段和值：HGETALL key。 List: 列表
-Set: 集合
-Sorted Set: 有序集合</p></div><footer class=entry-footer><span title='2025-02-05 09:39:00 +0800 CST'>February 5, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;35 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to Redis" href=https://heyuuuu77.github.io/posts/redis/></a></article></main><footer class=footer><span>&copy; 2025 <a href=https://heyuuuu77.github.io/>heyuuuu77</a></span> ·
+常见命令: LPUSH RPUSH LPOP RPOP LINDEX LRANGE LTRIM 等 是一个有序，可以重复的线性数据接口，基于双向链表，支持快速的插入和删除操作。
+LPUSH key value [value …]：将一个或多个值插入到列表的头部。 RPUSH key value [value …]：将一个或多个值插入到列表的尾部。 LPOP key：移除并返回列表的第一个元素。 RPOP key：移除并返回列表的最后一个元素。 LINDEX key index：返回列表中指定索引的元素。 LRANGE key start stop：返回列表中指定范围内的元素。 LTRIM key start stop：截取列表，只保留指定范围内的元素。 消息队列: FIFO (First In First Out)
+...</p></div><footer class=entry-footer><span title='2025-02-05 09:39:00 +0800 CST'>February 5, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;155 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to Redis" href=https://heyuuuu77.github.io/posts/redis/></a></article></main><footer class=footer><span>&copy; 2025 <a href=https://heyuuuu77.github.io/>heyuuuu77</a></span> ·
 <span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
