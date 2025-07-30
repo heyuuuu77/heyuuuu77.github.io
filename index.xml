@@ -11,21 +11,957 @@
     </image>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Jun 2025 15:53:55 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 30 Jul 2025 20:06:04 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
       <link>https://heyuuuu77.github.io/posts/music_list/</link>
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
       <guid>https://heyuuuu77.github.io/posts/music_list/</guid>
-      <description>只是分享记录几首自己喜欢的音乐，支持正版音乐</description>
+      <description>歌单，书单记录</description>
+    </item>
+    <item>
+      <title>Elasticsearch</title>
+      <link>https://heyuuuu77.github.io/posts/elasticsearch/</link>
+      <pubDate>Wed, 30 Jul 2025 20:06:04 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/elasticsearch/</guid>
+      <description>&lt;h3 id=&#34;start-elasticsearch-with-docker-localhost&#34;&gt;start elasticsearch with docker localhost&lt;/h3&gt;
+&lt;p&gt;执行&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;curl -fsSL https://elastic.co/start-local | sh 8DkwaOdk 8DkwaOdk elastic
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;curl -ssSL will get start-local.sh. The content will be:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;
+#!/bin/sh
+# --------------------------------------------------------
+# Run Elasticsearch and Kibana for local testing
+# Note: do not use this script in a production environment
+# --------------------------------------------------------
+#
+# Copyright Elasticsearch B.V. and/or licensed to Elasticsearch B.V. under one
+# or more contributor license agreements. See the NOTICE file distributed with
+# this work for additional information regarding copyright
+# ownership. Elasticsearch B.V. licenses this file to you under
+# the Apache License, Version 2.0 (the &amp;#34;License&amp;#34;); you may
+# not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#	http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# &amp;#34;AS IS&amp;#34; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+set -eu
+
+parse_args() {
+  # Parse the script parameters
+  while [ &amp;#34;$#&amp;#34; -gt 0 ]; do
+    case &amp;#34;$1&amp;#34; in
+      -v)
+        # Check that there is another argument for the version
+        if [ $# -lt 2 ]; then
+          echo &amp;#34;Error: -v requires a version value (eg. -v 8.17.0)&amp;#34;
+          exit 1
+        fi
+        es_version=&amp;#34;$2&amp;#34;
+        shift 2
+        ;;
+
+      --esonly)
+        esonly=true
+        shift
+        ;;
+
+      --)
+        # End of options; shift and exit the loop
+        shift
+        break
+        ;;
+
+      -*)
+        # Unknown or unsupported option
+        echo &amp;#34;Error: Unknown option &amp;#39;$1&amp;#39;&amp;#34;
+        exit 1
+        ;;
+
+      *)
+        # We&amp;#39;ve hit a non-option argument; stop parsing options
+        break
+        ;;
+    esac
+  done
+}
+
+startup() {
+  echo
+  echo &amp;#39;  ______ _           _   _      &amp;#39;
+  echo &amp;#39; |  ____| |         | | (_)     &amp;#39;
+  echo &amp;#39; | |__  | | __ _ ___| |_ _  ___ &amp;#39;
+  echo &amp;#39; |  __| | |/ _` / __| __| |/ __|&amp;#39;
+  echo &amp;#39; | |____| | (_| \__ \ |_| | (__ &amp;#39;
+  echo &amp;#39; |______|_|\__,_|___/\__|_|\___|&amp;#39;
+  echo &amp;#39;-------------------------------------------------&amp;#39;
+  echo &amp;#39;🚀 Run Elasticsearch and Kibana for local testing&amp;#39;
+  echo &amp;#39;-------------------------------------------------&amp;#39;
+  echo 
+  echo &amp;#39;ℹ️  Do not use this script in a production environment&amp;#39;
+  echo
+
+  # Version
+  version=&amp;#34;0.10.0&amp;#34;
+
+  # Folder name for the installation
+  installation_folder=&amp;#34;${ES_LOCAL_DIR:-elastic-start-local}&amp;#34;
+  # API key name for Elasticsearch
+  api_key_name=&amp;#34;elastic-start-local&amp;#34;
+  # Name of the error log
+  error_log=&amp;#34;error-start-local.log&amp;#34;
+  # Minimum version for docker-compose
+  min_docker_compose=&amp;#34;1.29.0&amp;#34;
+  # Elasticsearch container name
+  elasticsearch_container_name=&amp;#34;es-local-dev${ES_LOCAL_DIR:+-${ES_LOCAL_DIR}}&amp;#34;
+  # Kibana container name
+  kibana_container_name=&amp;#34;kibana-local-dev${ES_LOCAL_DIR:+-${ES_LOCAL_DIR}}&amp;#34;
+  # Kibana settings container name
+  kibana_settings_container_name=&amp;#34;kibana-local-settings${ES_LOCAL_DIR:+-${ES_LOCAL_DIR}}&amp;#34;
+  # Minimum disk space required for docker images + services (in GB)
+  min_disk_space_required=5
+}
+
+# Check for ARM64 architecture
+is_arm64() {
+  arch=&amp;#34;$(uname -m)&amp;#34;
+  if [ &amp;#34;$arch&amp;#34; = &amp;#34;arm64&amp;#34; ] || [ &amp;#34;$arch&amp;#34; = &amp;#34;aarch64&amp;#34; ]; then
+    return 0 # Return 0 (true)
+  else
+    return 1 # Return 1 (false)
+  fi
+}
+
+# Alternative to sort -V, which is not available in BSD-based systems (e.g., macOS)
+version_sort() {
+  awk -F&amp;#39;.&amp;#39; &amp;#39;
+  {
+      printf(&amp;#34;%d %d %d %s\n&amp;#34;, $1, $2, $3, $0)
+  }&amp;#39; | sort -n -k1,1 -k2,2 -k3,3 | awk &amp;#39;{print $4}&amp;#39;
+}
+
+# Function to check if the format is a valid semantic version (major.minor.patch)
+is_valid_version() {
+  echo &amp;#34;$1&amp;#34; | grep -E -q &amp;#39;^[0-9]+\.[0-9]+\.[0-9]+$&amp;#39;
+}
+
+# Get the latest stable version of Elasticsearch
+# Note: It removes all the beta or candidate releases from the list
+# but includes the GA releases (e.g. new major)
+get_latest_version() {
+  versions=&amp;#34;$(curl -s &amp;#34;https://artifacts.elastic.co/releases/stack.json&amp;#34;)&amp;#34;
+  latest_version=$(echo &amp;#34;$versions&amp;#34; | awk -F&amp;#39;&amp;#34;&amp;#39; &amp;#39;/&amp;#34;version&amp;#34;: *&amp;#34;/ {print $4}&amp;#39; | grep -E &amp;#39;^[0-9]+\.[0-9]+\.[0-9]+( GA)?$&amp;#39; | version_sort | tail -n 1)
+  # Remove the GA prefix from the version, if present
+  latest_version=$(echo &amp;#34;$latest_version&amp;#34; | awk &amp;#39;{ gsub(/ GA$/, &amp;#34;&amp;#34;, $0); print }&amp;#39;)
+
+  # Check if the latest version is empty
+  if [ -z &amp;#34;$latest_version&amp;#34; ]; then
+    echo &amp;#34;Error: the latest Elasticsearch version is empty&amp;#34;
+    exit 1
+  fi
+  # Check if the latest version is valid
+  if ! is_valid_version &amp;#34;$latest_version&amp;#34;; then
+    echo &amp;#34;Error: {$latest_version} is not a valid Elasticsearch stable version&amp;#34;
+    exit 1
+  fi
+
+  echo &amp;#34;$latest_version&amp;#34;
+}
+
+# Detect if running on LXC container
+detect_lxc() {
+    # Check /proc/1/environ for LXC container identifier
+    if grep -qa &amp;#34;container=lxc&amp;#34; /proc/1/environ 2&amp;gt;/dev/null; then
+      return 0
+    fi
+    # Check /proc/self/cgroup for LXC references
+    if grep -q &amp;#34;lxc&amp;#34; /proc/self/cgroup 2&amp;gt;/dev/null; then
+      return 0
+    fi
+    # Check for LXC in /sys/fs/cgroup
+    if grep -q &amp;#34;lxc&amp;#34; /sys/fs/cgroup/* 2&amp;gt;/dev/null; then  
+      return 0
+    fi
+    # Use systemd-detect-virt if available
+    if command -v systemd-detect-virt &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then
+      if [ &amp;#34;$(systemd-detect-virt)&amp;#34; = &amp;#34;lxc&amp;#34; ]; then
+        return 0
+      fi
+    fi
+    return 1
+}
+
+# Get linux distribution
+get_os_info() {
+  if [ -f /etc/os-release ]; then
+      # Most modern Linux distributions have this file
+      . /etc/os-release
+      echo &amp;#34;Distribution: $NAME&amp;#34;
+      echo &amp;#34;Version: $VERSION&amp;#34;
+  elif [ -f /etc/lsb-release ]; then
+      # For older distributions using LSB (Linux Standard Base)
+      . /etc/lsb-release
+      echo &amp;#34;Distribution: $DISTRIB_ID&amp;#34;
+      echo &amp;#34;Version: $DISTRIB_RELEASE&amp;#34;
+  elif [ -f /etc/debian_version ]; then
+      # For Debian-based distributions without os-release or lsb-release
+      echo &amp;#34;Distribution: Debian&amp;#34;
+      echo &amp;#34;Version: $(cat /etc/debian_version)&amp;#34;
+  elif [ -f /etc/redhat-release ]; then
+      # For Red Hat-based distributions
+      echo &amp;#34;Distribution: $(cat /etc/redhat-release)&amp;#34;
+  elif [ -n &amp;#34;${OSTYPE+x}&amp;#34; ]; then
+    if [ &amp;#34;${OSTYPE#darwin}&amp;#34; != &amp;#34;$OSTYPE&amp;#34; ]; then
+        # macOS detection
+        echo &amp;#34;Distribution: macOS&amp;#34;
+        echo &amp;#34;Version: $(sw_vers -productVersion)&amp;#34;
+    elif [ &amp;#34;$OSTYPE&amp;#34; = &amp;#34;cygwin&amp;#34; ] || [ &amp;#34;$OSTYPE&amp;#34; = &amp;#34;msys&amp;#34; ] || [ &amp;#34;$OSTYPE&amp;#34; = &amp;#34;win32&amp;#34; ]; then
+        # Windows detection in environments like Git Bash, Cygwin, or MinGW
+        echo &amp;#34;Distribution: Windows&amp;#34;
+        echo &amp;#34;Version: $(cmd.exe /c ver | tr -d &amp;#39;\r&amp;#39;)&amp;#34;
+    elif [ &amp;#34;$OSTYPE&amp;#34; = &amp;#34;linux-gnu&amp;#34; ] &amp;amp;&amp;amp; uname -r | grep -q &amp;#34;Microsoft&amp;#34;; then
+        # Windows Subsystem for Linux (WSL) detection
+        echo &amp;#34;Distribution: Windows (WSL)&amp;#34;
+        echo &amp;#34;Version: $(uname -r)&amp;#34;
+    fi
+  else
+      echo &amp;#34;Unknown operating system&amp;#34;
+  fi
+  if [ -f /proc/version ]; then
+    # Check if running on WSL2 or WSL1 for Microsoft
+    if grep -q &amp;#34;WSL2&amp;#34; /proc/version; then
+      echo &amp;#34;Running on WSL2&amp;#34;
+    elif grep -q &amp;#34;microsoft&amp;#34; /proc/version; then
+      echo &amp;#34;Running on WSL1&amp;#34;
+    fi
+  fi
+}
+
+# Check if a command exists
+available() { command -v &amp;#34;$1&amp;#34; &amp;gt;/dev/null; }
+
+# Revert the status, removing containers, volumes, network and folder
+cleanup() {
+  if [ -d &amp;#34;./../$folder_to_clean&amp;#34; ]; then
+    if [ -f &amp;#34;docker-compose.yml&amp;#34; ]; then
+      $docker_clean &amp;gt;/dev/null 2&amp;gt;&amp;amp;1
+      $docker_remove_volumes &amp;gt;/dev/null 2&amp;gt;&amp;amp;1
+    fi
+    cd ..
+    rm -rf &amp;#34;${folder_to_clean}&amp;#34;
+  fi
+}
+
+# Generate the error log
+# parameter 1: error message
+# parameter 2: the container names to retrieve, separated by comma
+generate_error_log() {
+  msg=&amp;#34;$1&amp;#34;
+  docker_services=&amp;#34;$2&amp;#34;
+  error_file=&amp;#34;$error_log&amp;#34;
+  if [ -d &amp;#34;./../$folder_to_clean&amp;#34; ]; then
+    error_file=&amp;#34;./../$error_log&amp;#34;
+  fi
+  if [ -n &amp;#34;${msg}&amp;#34; ]; then
+    echo &amp;#34;${msg}&amp;#34; &amp;gt; &amp;#34;$error_file&amp;#34;
+  fi
+  { 
+    echo &amp;#34;Start-local version: ${version}&amp;#34;
+    echo &amp;#34;Docker engine: $(docker --version)&amp;#34;
+    echo &amp;#34;Docker compose: ${docker_version}&amp;#34;
+    get_os_info
+  } &amp;gt;&amp;gt; &amp;#34;$error_file&amp;#34; 
+  for service in $docker_services; do
+    echo &amp;#34;-- Logs of service ${service}:&amp;#34; &amp;gt;&amp;gt; &amp;#34;$error_file&amp;#34;
+    docker logs &amp;#34;${service}&amp;#34; &amp;gt;&amp;gt; &amp;#34;$error_file&amp;#34; 2&amp;gt; /dev/null
+  done
+  echo &amp;#34;An error log has been generated in ${error_log} file.&amp;#34;
+  echo &amp;#34;If you need assistance, open an issue at https://github.com/elastic/start-local/issues&amp;#34;
+}
+
+# Compare versions
+# parameter 1: version to compare
+# parameter 2: version to compare
+compare_versions() {
+  v1=$1
+  v2=$2
+
+  original_ifs=&amp;#34;$IFS&amp;#34;
+  IFS=&amp;#39;.&amp;#39;
+  # shellcheck disable=SC2086
+  set -- $v1; v1_major=${1:-0}; v1_minor=${2:-0}; v1_patch=${3:-0}
+  IFS=&amp;#39;.&amp;#39;
+  # shellcheck disable=SC2086
+  set -- $v2; v2_major=${1:-0}; v2_minor=${2:-0}; v2_patch=${3:-0}
+  IFS=&amp;#34;$original_ifs&amp;#34;
+
+  [ &amp;#34;$v1_major&amp;#34; -lt &amp;#34;$v2_major&amp;#34; ] &amp;amp;&amp;amp; echo &amp;#34;lt&amp;#34; &amp;amp;&amp;amp; return 0
+  [ &amp;#34;$v1_major&amp;#34; -gt &amp;#34;$v2_major&amp;#34; ] &amp;amp;&amp;amp; echo &amp;#34;gt&amp;#34; &amp;amp;&amp;amp; return 0
+
+  [ &amp;#34;$v1_minor&amp;#34; -lt &amp;#34;$v2_minor&amp;#34; ] &amp;amp;&amp;amp; echo &amp;#34;lt&amp;#34; &amp;amp;&amp;amp; return 0
+  [ &amp;#34;$v1_minor&amp;#34; -gt &amp;#34;$v2_minor&amp;#34; ] &amp;amp;&amp;amp; echo &amp;#34;gt&amp;#34; &amp;amp;&amp;amp; return 0
+
+  [ &amp;#34;$v1_patch&amp;#34; -lt &amp;#34;$v2_patch&amp;#34; ] &amp;amp;&amp;amp; echo &amp;#34;lt&amp;#34; &amp;amp;&amp;amp; return 0
+  [ &amp;#34;$v1_patch&amp;#34; -gt &amp;#34;$v2_patch&amp;#34; ] &amp;amp;&amp;amp; echo &amp;#34;gt&amp;#34; &amp;amp;&amp;amp; return 0
+
+  echo &amp;#34;eq&amp;#34;
+}
+
+# Wait for availability of Kibana
+# parameter: timeout in seconds
+wait_for_kibana() {
+  timeout=&amp;#34;${1:-60}&amp;#34;
+  echo &amp;#34;- Waiting for Kibana to be ready&amp;#34;
+  echo
+  start_time=&amp;#34;$(date +%s)&amp;#34;
+  until curl -s -I http://localhost:5601 | grep -q &amp;#39;HTTP/1.1 302 Found&amp;#39;; do
+    elapsed_time=&amp;#34;$(($(date +%s) - start_time))&amp;#34;
+    if [ &amp;#34;$elapsed_time&amp;#34; -ge &amp;#34;$timeout&amp;#34; ]; then
+      error_msg=&amp;#34;Error: Kibana timeout of ${timeout} sec&amp;#34;
+      echo &amp;#34;$error_msg&amp;#34;
+      generate_error_log &amp;#34;${error_msg}&amp;#34; &amp;#34;${elasticsearch_container_name} ${kibana_container_name} kibana-settings&amp;#34;
+      cleanup
+      exit 1
+    fi
+    sleep 2
+  done
+}
+
+# Generates a random password with letters and numbers
+# parameter: size of the password (default is 8 characters)
+random_password() {
+  LENGTH=&amp;#34;${1:-8}&amp;#34;
+  LC_ALL=C tr -dc &amp;#39;A-Za-z0-9&amp;#39; &amp;lt; /dev/urandom | head -c &amp;#34;${LENGTH}&amp;#34;
+}
+
+# Create an API key for Elasticsearch
+# parameter 1: the Elasticsearch password
+# parameter 2: name of the API key to generate
+create_api_key() {
+  es_password=$1
+  name=$2
+  response=&amp;#34;$(curl -s -u &amp;#34;elastic:${es_password}&amp;#34; -X POST http://localhost:9200/_security/api_key -d &amp;#34;{\&amp;#34;name\&amp;#34;: \&amp;#34;${name}\&amp;#34;}&amp;#34; -H &amp;#34;Content-Type: application/json&amp;#34;)&amp;#34;
+  if [ -z &amp;#34;$response&amp;#34; ]; then
+    echo &amp;#34;&amp;#34;
+  else
+    api_key=&amp;#34;$(echo &amp;#34;$response&amp;#34; | grep -Eo &amp;#39;&amp;#34;encoded&amp;#34;:&amp;#34;[A-Za-z0-9+/=]+&amp;#39; | grep -Eo &amp;#39;[A-Za-z0-9+/=]+&amp;#39; | tail -n 1)&amp;#34;
+    echo &amp;#34;$api_key&amp;#34;
+  fi
+}
+
+# Check if a container is runnning
+# parameter: the name of the container
+check_container_running() {
+  container_name=$1
+  containers=&amp;#34;$(docker ps --format &amp;#39;{{.Names}}&amp;#39;)&amp;#34;
+  if echo &amp;#34;$containers&amp;#34; | grep -q &amp;#34;^${container_name}$&amp;#34;; then
+    echo &amp;#34;The docker container &amp;#39;$container_name&amp;#39; is already running!&amp;#34;
+    echo &amp;#34;You can have only one running at time.&amp;#34;
+    echo &amp;#34;To stop the container run the following command:&amp;#34;
+    echo
+    echo &amp;#34;docker stop $container_name&amp;#34;
+    exit 1
+  fi
+}
+
+# Check the available disk space in GB
+# parameter: required size in GB
+check_disk_space_gb() {
+  required=$1
+  available_gb=$(($(df -k / | awk &amp;#39;NR==2 {print $4}&amp;#39;) / 1024 / 1024))
+  if [ &amp;#34;$available_gb&amp;#34; -lt &amp;#34;$required&amp;#34; ]; then
+    echo &amp;#34;Error: only ${available_gb} GB of disk space available; ${required} GB required for the installation&amp;#34;
+    exit 1
+  fi
+}
+
+check_requirements() {
+  # Check the requirements
+  check_disk_space_gb ${min_disk_space_required}
+  if ! available &amp;#34;curl&amp;#34;; then
+    echo &amp;#34;Error: curl command is required&amp;#34;
+    echo &amp;#34;You can install it from https://curl.se/download.html.&amp;#34;
+    exit 1
+  fi
+  if ! available &amp;#34;grep&amp;#34;; then
+    echo &amp;#34;Error: grep command is required&amp;#34;
+    echo &amp;#34;You can install it from https://www.gnu.org/software/grep/.&amp;#34;
+    exit 1
+  fi
+  need_wait_for_kibana=true
+  # Check for &amp;#34;docker compose&amp;#34; or &amp;#34;docker-compose&amp;#34;
+  set +e
+  if ! docker compose &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then
+    if ! available &amp;#34;docker-compose&amp;#34;; then
+      if ! available &amp;#34;docker&amp;#34;; then
+        echo &amp;#34;Error: docker command is required&amp;#34;
+        echo &amp;#34;You can install it from https://docs.docker.com/engine/install/.&amp;#34;
+        exit 1
+      fi
+      echo &amp;#34;Error: docker compose is required&amp;#34;
+      echo &amp;#34;You can install it from https://docs.docker.com/compose/install/&amp;#34;
+      exit 1
+    fi
+    docker=&amp;#34;docker-compose up -d&amp;#34;
+    docker_stop=&amp;#34;docker-compose stop&amp;#34;
+    docker_clean=&amp;#34;docker-compose rm -fsv&amp;#34;
+    docker_remove_volumes=&amp;#34;docker-compose down -v&amp;#34;
+    docker_version=$(docker-compose --version | head -n 1 | grep -Eo &amp;#39;[0-9]+\.[0-9]+\.[0-9]+&amp;#39;)
+    if [ &amp;#34;$(compare_versions &amp;#34;$docker_version&amp;#34; &amp;#34;$min_docker_compose&amp;#34;)&amp;#34; = &amp;#34;lt&amp;#34; ]; then
+      echo &amp;#34;Unfortunately we don&amp;#39;t support docker compose ${docker_version}. The minimum required version is $min_docker_compose.&amp;#34;
+      echo &amp;#34;You can migrate you docker compose from https://docs.docker.com/compose/migrate/&amp;#34;
+      cleanup
+      exit 1
+    fi 
+  else
+    docker_stop=&amp;#34;docker compose stop&amp;#34;
+    docker_clean=&amp;#34;docker compose rm -fsv&amp;#34;
+    docker_remove_volumes=&amp;#34;docker compose down -v&amp;#34;
+    docker_version=$(docker compose version | head -n 1 | grep -Eo &amp;#39;[0-9]+\.[0-9]+\.[0-9]+&amp;#39;)
+    # --wait option has been introduced in 2.1.1+
+    if [ &amp;#34;$(compare_versions &amp;#34;$docker_version&amp;#34; &amp;#34;2.1.0&amp;#34;)&amp;#34; = &amp;#34;gt&amp;#34; ]; then
+      docker=&amp;#34;docker compose up --wait&amp;#34;
+      need_wait_for_kibana=false
+    else
+      docker=&amp;#34;docker compose up -d&amp;#34;
+    fi
+  fi
+  set -e
+}
+
+check_installation_folder() {
+  # Check if $installation_folder exists
+  folder=$installation_folder
+  if [ -d &amp;#34;$folder&amp;#34; ]; then
+    if [ -n &amp;#34;$(ls -A &amp;#34;$folder&amp;#34;)&amp;#34; ]; then
+      echo &amp;#34;It seems you have already a start-local installation in &amp;#39;${folder}&amp;#39;.&amp;#34;
+      if [ -f &amp;#34;$folder/uninstall.sh&amp;#34; ]; then
+        echo &amp;#34;I cannot proceed unless you uninstall it, using the following command:&amp;#34;
+        echo &amp;#34;cd $folder &amp;amp;&amp;amp; ./uninstall.sh&amp;#34;
+      else
+        echo &amp;#34;I did not find the uninstall.sh file, you need to proceed manually.&amp;#34;
+        if [ -f &amp;#34;$folder/docker-compose.yml&amp;#34; ] &amp;amp;&amp;amp; [ -f &amp;#34;$folder/.env&amp;#34; ]; then
+          echo &amp;#34;Execute the following commands:&amp;#34;
+          echo &amp;#34;cd $folder&amp;#34;
+          echo &amp;#34;$docker_clean&amp;#34;
+          echo &amp;#34;$docker_remove_volumes&amp;#34;
+          echo &amp;#34;cd ..&amp;#34;
+          echo &amp;#34;rm -rf $folder&amp;#34;
+        fi
+      fi
+      exit 1
+    fi
+  fi
+}
+
+check_docker_services() {
+  # Check for docker containers running
+  check_container_running &amp;#34;$elasticsearch_container_name&amp;#34;
+  check_container_running &amp;#34;$kibana_container_name&amp;#34;
+  check_container_running &amp;#34;$kibana_settings_container_name&amp;#34;
+}
+
+create_installation_folder() {
+  # If $folder already exists, it is empty, see above
+  if [ ! -d &amp;#34;$folder&amp;#34; ]; then 
+    mkdir &amp;#34;$folder&amp;#34;
+  fi
+  cd &amp;#34;$folder&amp;#34;
+  folder_to_clean=$folder
+}
+
+generate_passwords() {
+  # Generate random passwords
+  es_password=&amp;#34;${ES_LOCAL_PASSWORD:-$(random_password)}&amp;#34;
+  if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+    kibana_password=&amp;#34;$(random_password)&amp;#34;
+    kibana_encryption_key=&amp;#34;$(random_password 32)&amp;#34;
+  fi
+}
+
+choose_es_version() {
+  if [ -z &amp;#34;${es_version:-}&amp;#34; ]; then
+    # Get the latest Elasticsearch version
+    es_version=&amp;#34;$(get_latest_version)&amp;#34;
+  fi
+  # Fix for ARM64: add suffix &amp;#34;-arm64&amp;#34;
+  if is_arm64 &amp;amp;&amp;amp; [ &amp;#34;${es_version##*-arm64}&amp;#34; = &amp;#34;$es_version&amp;#34; ]; then
+    es_version=&amp;#34;${es_version}-arm64&amp;#34;
+  fi
+}
+
+create_env_file() {
+  # Create the .env file
+  cat &amp;gt; .env &amp;lt;&amp;lt;- EOM
+START_LOCAL_VERSION=$version
+ES_LOCAL_VERSION=$es_version
+ES_LOCAL_CONTAINER_NAME=$elasticsearch_container_name
+ES_LOCAL_PASSWORD=$es_password
+ES_LOCAL_PORT=9200
+ES_LOCAL_URL=http://localhost:\${ES_LOCAL_PORT}
+ES_LOCAL_HEAP_INIT=128m
+ES_LOCAL_HEAP_MAX=2g
+ES_LOCAL_DISK_SPACE_REQUIRED=1gb
+EOM
+
+  if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+    cat &amp;gt;&amp;gt; .env &amp;lt;&amp;lt;- EOM
+KIBANA_LOCAL_CONTAINER_NAME=$kibana_container_name
+KIBANA_LOCAL_SETTINGS_CONTAINER_NAME=$kibana_settings_container_name
+KIBANA_LOCAL_PORT=5601
+KIBANA_LOCAL_PASSWORD=$kibana_password
+KIBANA_ENCRYPTION_KEY=$kibana_encryption_key
+EOM
+  fi
+}
+
+# Create the start script (start.sh)
+# including the license update if trial expired
+create_start_file() {
+  today=$(date +%s)
+  expire=$((today + 3600*24*30))
+
+  cat &amp;gt; start.sh &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+#!/bin/sh
+# Start script for start-local
+# More information: https://github.com/elastic/start-local
+set -eu
+
+SCRIPT_DIR=&amp;#34;$(cd &amp;#34;$(dirname &amp;#34;$0&amp;#34;)&amp;#34; &amp;amp;&amp;amp; pwd)&amp;#34;
+cd &amp;#34;${SCRIPT_DIR}&amp;#34;
+today=$(date +%s)
+. ./.env
+# Check disk space
+available_gb=$(($(df -k / | awk &amp;#39;NR==2 {print $4}&amp;#39;) / 1024 / 1024))
+required=$(echo &amp;#34;${ES_LOCAL_DISK_SPACE_REQUIRED}&amp;#34; | grep -Eo &amp;#39;[0-9]+&amp;#39;)
+if [ &amp;#34;$available_gb&amp;#34; -lt &amp;#34;$required&amp;#34; ]; then
+  echo &amp;#34;----------------------------------------------------------------------------&amp;#34;
+  echo &amp;#34;WARNING: Disk space is below the ${required} GB limit. Elasticsearch will be&amp;#34;
+  echo &amp;#34;executed in read-only mode. Please free up disk space to resolve this issue.&amp;#34;
+  echo &amp;#34;----------------------------------------------------------------------------&amp;#34;
+  echo &amp;#34;Press ENTER to confirm.&amp;#34;
+  # shellcheck disable=SC2034
+  read -r line
+fi
+EOM
+  if [ &amp;#34;$need_wait_for_kibana&amp;#34; = true ]; then
+    cat &amp;gt;&amp;gt; start.sh &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+wait_for_kibana() {
+  _timeout=&amp;#34;${1:-60}&amp;#34;
+  echo &amp;#34;- Waiting for Kibana to be ready&amp;#34;
+  echo
+  _start_time=&amp;#34;$(date +%s)&amp;#34;
+  until curl -s -I http://localhost:5601 | grep -q &amp;#39;HTTP/1.1 302 Found&amp;#39;; do
+    elapsed_time=&amp;#34;$(($(date +%s) - _start_time))&amp;#34;
+    if [ &amp;#34;$elapsed_time&amp;#34; -ge &amp;#34;$_timeout&amp;#34; ]; then
+      echo &amp;#34;Error: Kibana timeout of ${_timeout} sec&amp;#34;
+      exit 1
+    fi
+    sleep 2
+  done
+}
+
+EOM
+  fi
+
+  cat &amp;gt;&amp;gt; start.sh &amp;lt;&amp;lt;- EOM
+if [ -z &amp;#34;\${ES_LOCAL_LICENSE:-}&amp;#34; ] &amp;amp;&amp;amp; [ &amp;#34;\$today&amp;#34; -gt $expire ]; then
+  echo &amp;#34;---------------------------------------------------------------------&amp;#34;
+  echo &amp;#34;The one-month trial period has expired. You can continue using the&amp;#34;
+  echo &amp;#34;Free and open Basic license or request to extend the trial for&amp;#34;
+  echo &amp;#34;another 30 days using this form:&amp;#34;
+  echo &amp;#34;https://www.elastic.co/trialextension&amp;#34;
+  echo &amp;#34;---------------------------------------------------------------------&amp;#34;
+  echo &amp;#34;For more info about the license: https://www.elastic.co/subscriptions&amp;#34;
+  echo
+  echo &amp;#34;Updating the license...&amp;#34;
+  $docker elasticsearch &amp;gt;/dev/null 2&amp;gt;&amp;amp;1
+  result=\$(curl -s -X POST &amp;#34;\${ES_LOCAL_URL}/_license/start_basic?acknowledge=true&amp;#34; -H &amp;#34;Authorization: ApiKey \${ES_LOCAL_API_KEY}&amp;#34; -o /dev/null -w &amp;#39;%{http_code}\n&amp;#39;)
+  if [ &amp;#34;\$result&amp;#34; = &amp;#34;200&amp;#34; ]; then
+    echo &amp;#34;✅ Basic license successfully installed&amp;#34;
+    echo &amp;#34;ES_LOCAL_LICENSE=basic&amp;#34; &amp;gt;&amp;gt; .env
+  else 
+    echo &amp;#34;Error: I cannot update the license&amp;#34;
+    result=\$(curl -s -X GET &amp;#34;\${ES_LOCAL_URL}&amp;#34; -H &amp;#34;Authorization: ApiKey \${ES_LOCAL_API_KEY}&amp;#34; -o /dev/null -w &amp;#39;%{http_code}\n&amp;#39;)
+    if [ &amp;#34;\$result&amp;#34; != &amp;#34;200&amp;#34; ]; then
+      echo &amp;#34;Elasticsearch is not running.&amp;#34;
+    fi
+    exit 1
+  fi
+  echo
+fi
+$docker
+EOM
+
+  if [ &amp;#34;$need_wait_for_kibana&amp;#34; = true ]; then
+    cat &amp;gt;&amp;gt; start.sh &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+wait_for_kibana 120
+EOM
+  fi
+  chmod +x start.sh
+}
+
+# Create the stop script (stop.sh)
+create_stop_file() {
+  cat &amp;gt; stop.sh &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+#!/bin/sh
+# Stop script for start-local
+# More information: https://github.com/elastic/start-local
+set -eu
+
+SCRIPT_DIR=&amp;#34;$(cd &amp;#34;$(dirname &amp;#34;$0&amp;#34;)&amp;#34; &amp;amp;&amp;amp; pwd)&amp;#34;
+cd &amp;#34;${SCRIPT_DIR}&amp;#34;
+EOM
+
+  cat &amp;gt;&amp;gt; stop.sh &amp;lt;&amp;lt;- EOM
+$docker_stop
+EOM
+  chmod +x stop.sh
+}
+
+# Create the uninstall script (uninstall.sh)
+create_uninstall_file() {
+
+  cat &amp;gt; uninstall.sh &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+#!/bin/sh
+# Uninstall script for start-local
+# More information: https://github.com/elastic/start-local
+set -eu
+
+SCRIPT_DIR=&amp;#34;$(cd &amp;#34;$(dirname &amp;#34;$0&amp;#34;)&amp;#34; &amp;amp;&amp;amp; pwd)&amp;#34;
+
+ask_confirmation() {
+    echo &amp;#34;Do you confirm? (yes/no)&amp;#34;
+    read -r answer
+    case &amp;#34;$answer&amp;#34; in
+        yes|y|Y|Yes|YES)
+            return 0  # true
+            ;;
+        no|n|N|No|NO)
+            return 1  # false
+            ;;
+        *)
+            echo &amp;#34;Please answer yes or no.&amp;#34;
+            ask_confirmation  # Ask again if the input is invalid
+            ;;
+    esac
+}
+
+cd &amp;#34;${SCRIPT_DIR}&amp;#34;
+if [ ! -e &amp;#34;docker-compose.yml&amp;#34; ]; then
+  echo &amp;#34;Error: I cannot find the docker-compose.yml file&amp;#34;
+  echo &amp;#34;I cannot uninstall start-local.&amp;#34;
+fi
+if [ ! -e &amp;#34;.env&amp;#34; ]; then
+  echo &amp;#34;Error: I cannot find the .env file&amp;#34;
+  echo &amp;#34;I cannot uninstall start-local.&amp;#34;
+fi
+echo &amp;#34;This script will uninstall start-local.&amp;#34;
+echo &amp;#34;All data will be deleted and cannot be recovered.&amp;#34;
+if ask_confirmation; then
+EOM
+
+  cat &amp;gt;&amp;gt; uninstall.sh &amp;lt;&amp;lt;- EOM
+  $docker_clean
+  $docker_remove_volumes
+  rm docker-compose.yml .env uninstall.sh start.sh stop.sh config/telemetry.yml
+  if [ -z &amp;#34;\$(ls -A config)&amp;#34; ]; then
+    rm -d config
+  fi
+  echo
+  echo &amp;#34;Do you want to remove the following Docker images?&amp;#34;
+  echo &amp;#34;- docker.elastic.co/elasticsearch/elasticsearch:${es_version}&amp;#34;
+EOM
+
+  if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+    cat &amp;gt;&amp;gt; uninstall.sh &amp;lt;&amp;lt;- EOM
+  echo &amp;#34;- docker.elastic.co/kibana/kibana:${es_version}&amp;#34;
+EOM
+  fi
+
+  cat &amp;gt;&amp;gt; uninstall.sh &amp;lt;&amp;lt;- EOM
+  if ask_confirmation; then
+    if docker rmi &amp;#34;docker.elastic.co/elasticsearch/elasticsearch:${es_version}&amp;#34; &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then
+      echo &amp;#34;Image docker.elastic.co/elasticsearch/elasticsearch:${es_version} removed successfully&amp;#34;
+    else
+      echo &amp;#34;Failed to remove image docker.elastic.co/elasticsearch/elasticsearch:${es_version}. It might be in use.&amp;#34;
+    fi
+EOM
+
+  if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+    cat &amp;gt;&amp;gt; uninstall.sh &amp;lt;&amp;lt;- EOM
+    if docker rmi docker.elastic.co/kibana/kibana:${es_version} &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then
+      echo &amp;#34;Image docker.elastic.co/kibana/kibana:${es_version} removed successfully&amp;#34;
+    else
+      echo &amp;#34;Failed to remove image docker.elastic.co/kibana/kibana:${es_version}. It might be in use.&amp;#34;
+    fi
+EOM
+  fi
+
+  cat &amp;gt;&amp;gt; uninstall.sh &amp;lt;&amp;lt;- EOM
+  fi
+  echo &amp;#34;Start-local successfully removed&amp;#34;
+fi
+EOM
+  chmod +x uninstall.sh
+}
+
+create_docker_compose_file() {
+  # Create the docker-compose-yml file
+  cat &amp;gt; docker-compose.yml &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ES_LOCAL_VERSION}
+    container_name: ${ES_LOCAL_CONTAINER_NAME}
+    volumes:
+      - dev-elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - 127.0.0.1:${ES_LOCAL_PORT}:9200
+    environment:
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=${ES_LOCAL_PASSWORD}
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=false
+      - xpack.license.self_generated.type=trial
+      - xpack.ml.use_auto_machine_memory_percent=true
+      - ES_JAVA_OPTS=-Xms${ES_LOCAL_HEAP_INIT} -Xmx${ES_LOCAL_HEAP_MAX}
+      - cluster.routing.allocation.disk.watermark.low=${ES_LOCAL_DISK_SPACE_REQUIRED}
+      - cluster.routing.allocation.disk.watermark.high=${ES_LOCAL_DISK_SPACE_REQUIRED}
+      - cluster.routing.allocation.disk.watermark.flood_stage=${ES_LOCAL_DISK_SPACE_REQUIRED}
+EOM
+  
+  # Fix for JDK AArch64 issue, see https://bugs.openjdk.org/browse/JDK-8345296
+  if is_arm64; then
+  cat &amp;gt;&amp;gt; docker-compose.yml &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+      - &amp;#34;_JAVA_OPTIONS=-XX:UseSVE=0&amp;#34;
+EOM
+  fi
+
+  # Fix for OCI issue on LXC, see https://github.com/elastic/start-local/issues/27
+  if ! detect_lxc; then
+  cat &amp;gt;&amp;gt; docker-compose.yml &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+EOM
+  fi
+
+  cat &amp;gt;&amp;gt; docker-compose.yml &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+    healthcheck:
+      test:
+        [
+          &amp;#34;CMD-SHELL&amp;#34;,
+          &amp;#34;curl --output /dev/null --silent --head --fail -u elastic:${ES_LOCAL_PASSWORD} http://elasticsearch:9200&amp;#34;,
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+
+EOM
+
+if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+  cat &amp;gt;&amp;gt; docker-compose.yml &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+  kibana_settings:
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ES_LOCAL_VERSION}
+    container_name: ${KIBANA_LOCAL_SETTINGS_CONTAINER_NAME}
+    restart: &amp;#39;no&amp;#39;
+    command: &amp;gt;
+      bash -c &amp;#39;
+        echo &amp;#34;Setup the kibana_system password&amp;#34;;
+        start_time=$$(date +%s);
+        timeout=60;
+        until curl -s -u &amp;#34;elastic:${ES_LOCAL_PASSWORD}&amp;#34; -X POST http://elasticsearch:9200/_security/user/kibana_system/_password -d &amp;#34;{\&amp;#34;password\&amp;#34;:\&amp;#34;${KIBANA_LOCAL_PASSWORD}\&amp;#34;}&amp;#34; -H &amp;#34;Content-Type: application/json&amp;#34; | grep -q &amp;#34;^{}&amp;#34;; do
+          if [ $$(($$(date +%s) - $$start_time)) -ge $$timeout ]; then
+            echo &amp;#34;Error: Elasticsearch timeout&amp;#34;;
+            exit 1;
+          fi;
+          sleep 2;
+        done;
+      &amp;#39;
+
+  kibana:
+    depends_on:
+      kibana_settings:
+        condition: service_completed_successfully
+    image: docker.elastic.co/kibana/kibana:${ES_LOCAL_VERSION}
+    container_name: ${KIBANA_LOCAL_CONTAINER_NAME}
+    volumes:
+      - dev-kibana:/usr/share/kibana/data
+      - ./config/telemetry.yml:/usr/share/kibana/config/telemetry.yml
+    ports:
+      - 127.0.0.1:${KIBANA_LOCAL_PORT}:5601
+    environment:
+      - SERVER_NAME=kibana
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=${KIBANA_LOCAL_PASSWORD}
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${KIBANA_ENCRYPTION_KEY}
+      - ELASTICSEARCH_PUBLICBASEURL=http://localhost:${ES_LOCAL_PORT}
+    healthcheck:
+      test:
+        [
+          &amp;#34;CMD-SHELL&amp;#34;,
+          &amp;#34;curl -s -I http://kibana:5601 | grep -q &amp;#39;HTTP/1.1 302 Found&amp;#39;&amp;#34;,
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+
+EOM
+fi
+
+  cat &amp;gt;&amp;gt; docker-compose.yml &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+volumes:
+  dev-elasticsearch:
+EOM
+
+if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+  cat &amp;gt;&amp;gt; docker-compose.yml &amp;lt;&amp;lt;-&amp;#39;EOM&amp;#39;
+  dev-kibana:
+EOM
+fi
+
+create_kibana_config
+}
+
+create_kibana_config() {
+  if [ ! -d &amp;#34;config&amp;#34; ]; then
+    mkdir config
+  fi
+  # Create telemetry
+  cat &amp;gt; config/telemetry.yml &amp;lt;&amp;lt;- EOM
+start-local:
+  version: ${version}
+EOM
+}
+
+print_steps() {
+  if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+    echo &amp;#34;⌛️ Setting up Elasticsearch and Kibana v${es_version}...&amp;#34;
+  else
+    echo &amp;#34;⌛️ Setting up Elasticsearch v${es_version}...&amp;#34;
+  fi
+  echo
+  echo &amp;#34;- Generated random passwords&amp;#34;
+  echo &amp;#34;- Created the ${folder} folder containing the files:&amp;#34;
+  echo &amp;#34;  - .env, with settings&amp;#34;
+  echo &amp;#34;  - docker-compose.yml, for Docker services&amp;#34;
+  echo &amp;#34;  - start/stop/uninstall commands&amp;#34;
+}
+
+running_docker_compose() {
+  # Execute docker compose
+  echo &amp;#34;- Running ${docker}&amp;#34;
+  echo
+  set +e
+  if ! $docker; then
+    error_msg=&amp;#34;Error: ${docker} command failed!&amp;#34;
+    echo &amp;#34;$error_msg&amp;#34;
+    if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+      generate_error_log &amp;#34;${error_msg}&amp;#34; &amp;#34;${elasticsearch_container_name} ${kibana_container_name} kibana_settings&amp;#34;
+    else
+      generate_error_log &amp;#34;${error_msg}&amp;#34; &amp;#34;${elasticsearch_container_name}&amp;#34;
+    fi
+    cleanup
+    exit 1
+  fi
+  set -e
+}
+
+api_key() {
+  # Create an API key for Elasticsearch
+  api_key=$(create_api_key &amp;#34;$es_password&amp;#34; &amp;#34;$api_key_name&amp;#34;)
+  if [ -n &amp;#34;$api_key&amp;#34; ]; then
+    echo &amp;#34;ES_LOCAL_API_KEY=${api_key}&amp;#34; &amp;gt;&amp;gt; .env
+  fi
+}
+
+kibana_wait() {
+  if [ &amp;#34;$need_wait_for_kibana&amp;#34; = true ]; then
+    wait_for_kibana 120
+  fi
+}
+
+success() {
+  echo
+  if  [ -z &amp;#34;${esonly:-}&amp;#34; ]; then
+    echo &amp;#34;🎉 Congrats, Elasticsearch and Kibana are installed and running in Docker!&amp;#34;
+    echo
+    echo &amp;#34;🌐 Open your browser at http://localhost:5601&amp;#34;
+    echo
+    echo &amp;#34;   Username: elastic&amp;#34;
+    echo &amp;#34;   Password: ${es_password}&amp;#34;
+    echo
+  else
+    echo &amp;#34;🎉 Congrats, Elasticsearch is installed and running in Docker!&amp;#34;
+  fi
+  
+  echo &amp;#34;🔌 Elasticsearch API endpoint: http://localhost:9200&amp;#34;
+  if [ -n &amp;#34;$api_key&amp;#34; ]; then
+    echo &amp;#34;🔑 API key: $api_key&amp;#34;
+    echo
+  else
+    echo &amp;#34;🔑 Use basic auth or create an API key&amp;#34;
+    echo &amp;#34;https://www.elastic.co/guide/en/kibana/current/api-keys.html&amp;#34;
+    echo
+  fi
+  echo
+  echo &amp;#34;Learn more at https://github.com/elastic/start-local&amp;#34;
+
+  echo
+}
+
+main() {
+  parse_args &amp;#34;$@&amp;#34;
+  startup
+  check_requirements
+  check_installation_folder
+  check_docker_services
+  create_installation_folder
+  generate_passwords
+  choose_es_version
+  create_start_file
+  create_stop_file
+  create_uninstall_file
+  create_env_file
+  create_docker_compose_file
+  print_steps
+  running_docker_compose
+  api_key
+  kibana_wait
+  success
+}
+
+ctrl_c() { 
+  cleanup
+  exit 1
+}
+
+# Trap ctrl-c
+trap ctrl_c INT
+
+# Execute the script
+main &amp;#34;$@&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Tree</title>
       <link>https://heyuuuu77.github.io/posts/tree/</link>
       <pubDate>Fri, 06 Jun 2025 15:53:55 +0800</pubDate>
       <guid>https://heyuuuu77.github.io/posts/tree/</guid>
-      <description>&lt;h3&gt;&lt;/h3&gt;</description>
+      <description>&lt;h3 id=&#34;哈希冲突的原因以及解决办法&#34;&gt;哈希冲突的原因以及解决办法&lt;/h3&gt;
+&lt;p&gt;hash算法是一种数据压缩方式，由于算法产生的哈希值的数量是有限的，所以当数据量大时就会出现哈希值不够用的情况，多个数据通过算法的出了相同的哈希值。从而产生了冲突。&lt;/p&gt;</description>
     </item>
     <item>
       <title>记录一次curl的报错</title>
@@ -381,8 +1317,8 @@ google 开源。 protobuf支持&lt;/p&gt;
       <link>https://heyuuuu77.github.io/posts/interview/</link>
       <pubDate>Sat, 08 Feb 2025 16:55:54 +0800</pubDate>
       <guid>https://heyuuuu77.github.io/posts/interview/</guid>
-      <description>&lt;h3 id=&#34;记录一下面试&#34;&gt;记录一下面试&lt;/h3&gt;
-&lt;h5 id=&#34;面试莉莉丝--失败&#34;&gt;面试莉莉丝 &amp;ndash; 失败&lt;/h5&gt;
+      <description>&lt;!-- ### 记录一下面试 --&gt;
+&lt;!-- ##### 面试莉莉丝 -- 失败 --&gt;
 &lt;p&gt;&lt;code&gt;失败理由:&lt;/code&gt; 各方面还不错，但是有更合适的人选。&lt;/p&gt;
 &lt;p&gt;知道这只是那边的比较委婉的表达。 一面总体来说没聊什么技术问题。聊了一些业务相关的。
 比较意想不到的提问是： 如果我是业务方，我会比较看重哪些指标。 这个问题我是比较错愕的，我面试的是技术开发岗位，一般负责的是具体的功能落地等相关技术更多。
@@ -392,7 +1328,11 @@ google 开源。 protobuf支持&lt;/p&gt;
 很重视这次面试，为此还专门请了半天假在家面试。还在试用期，扣了半天的工资。唉，果然期待越高，失败之后越难过。有点傻&lt;/p&gt;
 &lt;p&gt;唉。 后面波克城市有类似的岗位。简历送到用人部门过leader筛选了。希望能有反馈。&lt;/p&gt;
 &lt;p&gt;心情：非常有挫败感 💔
-&amp;mdash;- 记录于 2025-02-08 16:55.&lt;/p&gt;</description>
+&amp;mdash;- 记录于 2025-02-08 16:55.&lt;/p&gt;
+&lt;h1 id=&#34;2025-06-11-面试知识点汇总&#34;&gt;2025-06-11 面试知识点汇总&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
     <item>
       <title>Django的常见问题</title>
