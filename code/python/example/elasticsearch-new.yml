@@ -1,0 +1,9 @@
+# elasticsearch-new.yml
+
+cluster.name: docker-cluster
+node.name: es-node-2
+network.host: 0.0.0.0
+http.port: 9200
+transport.port: 9300
+discovery.seed_hosts: ["elasticsearch"]
+cluster.initial_master_nodes: ["elasticsearch"]  # 现有主节点名称
