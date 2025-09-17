@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 30 Jul 2025 20:06:04 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Sep 2025 11:36:54 +0800</lastBuildDate>
     <atom:link href="https://heyuuuu77.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>歌单</title>
@@ -19,6 +19,33 @@
       <pubDate>Wed, 15 Jan 2025 11:30:03 +0000</pubDate>
       <guid>https://heyuuuu77.github.io/posts/music_list/</guid>
       <description>歌单，书单记录</description>
+    </item>
+    <item>
+      <title>Docker遇到的坑</title>
+      <link>https://heyuuuu77.github.io/posts/docker/</link>
+      <pubDate>Wed, 17 Sep 2025 11:36:54 +0800</pubDate>
+      <guid>https://heyuuuu77.github.io/posts/docker/</guid>
+      <description>&lt;h4 id=&#34;上下文&#34;&gt;上下文&lt;/h4&gt;
+&lt;p&gt;线上一个小型服务，直接使用docker-compose 管理。 docker-compose up 的时候首先报错&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[+] Building 16.4s (1/1) FINISHED                                                                                                                                                                                                                docker-container:linux-builder
+ =&amp;gt; ERROR [web internal] booting buildkit                                                                                                                                                                                                                                 16.4s
+ =&amp;gt; =&amp;gt; pulling image moby/buildkit:buildx-stable-1                                                                                                                                                                                                                        16.4s
+------
+[+] Running 0/1l] booting buildkit:
+ ⠸ Service web  Building                                                                                                                                                                                                                                                  16.4s
+Error response from daemon: Get &amp;#34;https://registry-1.docker.io/v2/&amp;#34;: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查看 /etc/docker/daemon.json配置，显示了&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+  &amp;#34;data-root&amp;#34;: &amp;#34;/var/lib/docker&amp;#34;,
+  &amp;#34;registry-mirrors&amp;#34;: [
+    &amp;#34;https://docker.xuanyuan.me&amp;#34;,
+    &amp;#34;https://docker.aityp.com&amp;#34;,
+    &amp;#34;https://mirror.baidubce.com&amp;#34;
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一开始的解决思路就是新增国内镜像。但是问题是出在 buildKit 上。 Docker BuildKit 是新一代的镜像构建引擎。它会使用 DockerHub 官方 registry（https://registry-1.docker.io/v2/）
+拉取镜像。因此会设计到网络访问问题，已知国内的云服务器访问不了外网。
+解决这个问题的方式有两种，但是目的是同一个，就是禁用 buildKit.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Elasticsearch</title>
