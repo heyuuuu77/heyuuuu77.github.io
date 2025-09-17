@@ -1,145 +1,170 @@
 baseURL = "https://heyuuuu77.github.io/"
-title = "heyuuuu77"
-theme = "PaperMod"
+languageCode = "zh-cn"
+theme = "stack"
+title = "Heyuuuu"
+copyright = "Heyuuuu"
+DefaultContentLanguage = "zh-cn"
+hasCJKLanguage = true
+
+# 分页设置
+[pagination]
+pagerSize = 5
+
+# 永久链接设置
+[permalinks]
+post = "/posts/:slug/"
+page = "/:slug/"
+
+# 主要配置
+[params]
+mainSections = ["posts"]
+featuredImageField = "image"
+rssFullContent = true
+favicon = "/favicon.ico"
+
+# 页脚设置
+[params.footer]
+since = 2024
+customText = ""
+
+# 日期格式
+[params.dateFormat]
+published = "2006-01-02"
+lastUpdated = "2006-01-02 15:04"
+
+# 侧边栏设置
+[params.sidebar]
+emoji = "👋"
+subtitle = "简单记录生活点滴"
+avatar.enabled = true
+avatar.local = true
+avatar.src = "img/avatar.png"
+
+# 文章设置
+[params.article]
+math = false
+toc = true
+readingTime = true
+license.enabled = true
+license.default = "Licensed under CC BY-NC-SA 4.0"
+
+# 评论设置
+[params.comments]
+enabled = false
+
+# 小部件设置
+[params.widgets]
+homepage = [
+    {type = "search"},
+    {type = "archives", params = {limit = 5}},
+    {type = "categories", params = {limit = 10}},
+    {type = "tag-cloud", params = {limit = 10}}
+]
+page = [
+    {type = "toc"}
+]
+
+# OpenGraph设置
+[params.opengraph]
+twitter.site = ""
+twitter.card = "summary_large_image"
+
+# 默认图片设置
+[params.defaultImage]
+opengraph.enabled = false
+opengraph.local = false
+opengraph.src = ""
+
+# 颜色方案
+[params.colorScheme]
+toggle = true
+default = "auto"
+
+# 图片处理
+[params.imageProcessing]
+cover.enabled = true
+content.enabled = true
+
+# 菜单设置
+[[menu.main]]
+identifier = "home"
+name = "首页"
+url = "/"
+weight = 10
+
+[[menu.main]]
+identifier = "posts"
+name = "文章"
+url = "/posts/"
+weight = 20
+
+[[menu.main]]
+identifier = "categories"
+name = "分类"
+url = "/categories/"
+weight = 30
+
+[[menu.main]]
+identifier = "tags"
+name = "标签"
+url = "/tags/"
+weight = 40
+
+# 社交链接
+[[menu.social]]
+identifier = "x"
+name = "X"
+url = "https://x.com/"
+params.icon = "brand-twitter"
+
+# 相关文章设置
+[related]
+includeNewer = true
+threshold = 60
+toLower = false
+
+[[related.indices]]
+name = "tags"
+weight = 100
+
+[[related.indices]]
+name = "categories"
+weight = 200
+
+# Markup设置
+[markup]
+[markup.goldmark]
+[markup.goldmark.extensions]
+[markup.goldmark.extensions.passthrough]
+enable = true
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [["[", "]"], ["$$", "$$"]]
+inline = [["(", ")"]]
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+endLevel = 4
+ordered = true
+startLevel = 2
+
+[markup.highlight]
+noClasses = false
+codeFences = true
+guessSyntax = true
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = true
+tabWidth = 4
+
+# 压缩设置
+[minify]
+disableXML = true
+minifyOutput = true
+
+# 机器人设置
 enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
 pygmentsUseClasses = true
-
-[pagination]
-pagerSize = 5
-
-
-[minify]
-disableXML = true
-minifyOutput = true
-
-[params]
-env = "production"
-title = "Heyuuuu"
-description = "简单记录"
-keywords = [ "Blog", "Portfolio", "PaperMod" ]
-author = "Me"
-images = [ "<link or path of image for opengraph, twitter-cards>" ]
-DateFormat = "January 2, 2006"
-defaultTheme = "auto"
-disableThemeToggle = false
-ShowReadingTime = true
-ShowShareButtons = true
-ShowPostNavLinks = true
-ShowBreadCrumbs = true
-ShowCodeCopyButtons = false
-ShowWordCount = true
-ShowRssButtonInSectionTermList = true
-UseHugoToc = true
-disableSpecial1stPost = false
-disableScrollToTop = false
-comments = false
-hidemeta = false
-hideSummary = false
-showtoc = false
-tocopen = false
-
-  [params.assets]
-  favicon = "<link / abs url>"
-  favicon16x16 = "<link / abs url>"
-  favicon32x32 = "<link / abs url>"
-  apple_touch_icon = "<link / abs url>"
-  safari_pinned_tab = "<link / abs url>"
-
-  [params.label]
-  text = "Home"
-  icon = "/apple-touch-icon.png"
-  iconHeight = 35
-
-  [params.profileMode]
-  enabled = true
-  title = "Heyuuuu--"
-  subtitle = "missuuuuuuu so much"
-  imageUrl = "avator.jpg"
-  imageWidth = 120
-  imageHeight = 120
-  imageTitle = "Avator"
-
-    [[params.profileMode.buttons]]
-    name = "手记"
-    url = "/posts"
-
-    [[params.profileMode.buttons]]
-    name = "自留地"
-    url = "tags"
-
-  [params.homeInfoParams]
-  
-  [[params.socialIcons]]
-  name = "X"
-  url = "https://x.com/"
-
-#  [[params.socialIcons]]
-#  name = "stackoverflow"
-#  url = "https://stackoverflow.com"
-
-#  [[params.socialIcons]]
-#  name = "github"
-#  url = "https://github.com/"
-
-[params.analytics.google]
-SiteVerificationTag = "XYZabc"
-
-[params.analytics.bing]
-SiteVerificationTag = "XYZabc"
-
-[params.analytics.yandex]
-SiteVerificationTag = "XYZabc"
-
-  [params.cover]
-  hidden = true
-  hiddenInList = true
-  hiddenInSingle = true
-
-  [params.fuseOpts]
-  isCaseSensitive = false
-  shouldSort = true
-  location = 0
-  distance = 1_000
-  threshold = 0.4
-  minMatchCharLength = 0
-  limit = 10
-  keys = [ "title", "permalink", "summary", "content" ]
-
-[[menu.main]]
-identifier = "categories"
-name = "categories"
-url = "categories"
-weight = 10
-
-[[menu.main]]
-identifier = "Posts"
-name = "Posts"
-url = "/posts/"
-weight = 10
-
-[[menu.main]]
-identifier = "tags"
-name = "tags"
-url = "/tags/"
-weight = 20
-
-[[menu.main]]
-identifier = "example"
-name = "example.org"
-url = "https://example.org"
-weight = 30
-
-[markup.highlight]
-noClasses = false
-
-[markup.goldmark.renderer]
-unsafe = true
-
-[markup]
-  [markup.tableOfContents]
-    startLevel = 2  # 从二级标题开始生成目录
-    endLevel = 6    # 到六级标题结束生成目录
-    ordered = false # 不使用有序列表

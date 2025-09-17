@@ -4,6 +4,7 @@ date: 2025-01-15T11:30:03+00:00
 weight: 1
 tags: ["歌单", "书单"]
 author: "Me"
+image: "/images/tabudong.jpg"
 showToc: true
 TocOpen: false
 draft: false
