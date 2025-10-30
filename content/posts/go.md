@@ -5,6 +5,17 @@ title = 'Go语言实战笔记'
 toc = true
 +++
 
+## 目录
+- [引用类型](#引用类型)
+- [sync](#sync)
+  - [命名规范](#命名规范)
+- [最佳实践](#最佳实践)
+- [GO 命令](#go-命令)
+- [数组、切片、映射](#数组切片映射)
+- [指针](#指针)
+- [Channel](#channel)
+
+---
 
 ##### 引用类型
 通道(channel)、 映射(map)、 切片(slice)
@@ -105,3 +116,57 @@ golang中是值传递。 传址也是传递地址的副本。
 
 &是地址运算符，它位于值类型之前，返回存储改值的内存位置的地址；
 *是间接寻址运算符。位于指针变量之前，返回指向的值。
+
+
+
+#### Channel
+
+在Golang中， channel分有缓存通道和无缓冲通道。 
+1. 无缓冲通道：在写入channel后，就会阻塞等待接受者读取。Go中有大量依赖阻塞特性的场景，比如
+```golang
+// 示例： 创建一个生成器
+func generateInteger() func() int {
+    ch := make(chan int)
+    cnt := 0
+
+    go func () {
+        for {
+            ch <- cnt
+            cnt++
+        }
+    }{}
+}
+
+func main() {
+
+    generate := generateInteger()
+    fmt.Println(generate()) // 0
+    fmt.Println(generate()) // 1
+    fmt.Println(generate()) //
+}
+
+```
+我一开始有个疑问，在初始化generateInteger()之后，for循环一直在执行中，不会导致超时或者OOM么。但事实上是，循环中的操作会被 channel 的阻塞特性“限流”，不会无限制占用内存。
+并且很多Go程序都会用到这个特性。下面是通过channel监控子协程的完成。不用通过time.Sleep等不可靠的方式。
+```golang
+func task(done chan<-struct{}) {
+    // 这里执行子任务
+
+    done <- struct{}{} //任务完成，发送信号
+}
+
+
+func main() {
+    done := make(chan struct{})
+
+    go task(done)
+
+    <-done  // 这里就会阻塞等待协程完成任务
+
+    fmt.Println("任务完成")
+
+}
+
+
+```
+
