@@ -1,8 +1,12 @@
-+++
-date = '2025-02-21T08:46:57+08:00'
-draft = false
-title = '分布式系统'
-+++
+---
+title: "分布式系统基础"
+date: 2025-02-21T08:46:57+08:00
+draft: false
+description: "分布式系统核心概念与设计模式"
+tags: ["分布式系统", "架构"]
+categories: ["系统设计"]
+author: "Heyuuuu"
+---
 
 
 

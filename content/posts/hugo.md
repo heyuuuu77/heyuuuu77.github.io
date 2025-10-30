@@ -1,9 +1,12 @@
-+++
-date = '2025-02-08T17:06:08+08:00'
-draft = false
-title = 'Hugo'
-tags = ['hugo']
-+++
+---
+title: "Hugo 静态博客搭建"
+date: 2025-02-08T17:06:08+08:00
+draft: false
+description: "Hugo 建站教程与使用技巧"
+tags: ["Hugo", "博客"]
+categories: ["工具"]
+author: "Heyuuuu"
+---
 
 
 使用Hugo搭建 github page越到的坑。 首先 hugo 命令会生成静态文件。 

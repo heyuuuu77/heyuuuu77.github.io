@@ -1,9 +1,12 @@
-+++
-date = '2025-09-17T11:36:54+08:00'
-draft = false
-title = 'Docker遇到的坑'
-tags = ['Docker']
-+++
+---
+title: "Docker 使用踩坑记录"
+date: 2025-09-17T11:36:54+08:00
+draft: false
+description: "Docker 实战中遇到的问题与解决方案"
+tags: ["Docker", "容器化"]
+categories: ["运维"]
+author: "Heyuuuu"
+---
 
 
 

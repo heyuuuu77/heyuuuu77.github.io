@@ -1,8 +1,12 @@
-+++
-date = '2025-02-08T16:55:54+08:00'
-draft = false
-title = 'Interview'
-+++
+---
+title: "面试题汇总"
+date: 2025-02-08T16:55:54+08:00
+draft: false
+description: "常见技术面试题整理"
+tags: ["面试", "算法"]
+categories: ["面试"]
+author: "Heyuuuu"
+---
 
 
 <!-- ### 记录一下面试 -->

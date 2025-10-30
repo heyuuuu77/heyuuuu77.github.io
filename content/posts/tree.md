@@ -1,8 +1,12 @@
-+++
-date = '2025-06-06T15:53:55+08:00'
-draft = false
-title = 'Tree'
-+++
+---
+title: "树与哈希表"
+date: 2025-06-06T15:53:55+08:00
+draft: false
+description: "树结构与哈希表数据结构详解"
+tags: ["数据结构", "树", "哈希表"]
+categories: ["算法"]
+author: "Heyuuuu"
+---
 
 
 

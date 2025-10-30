@@ -1,10 +1,12 @@
-+++
-date = '2025-02-05T09:39:00+08:00'
-draft = false
-title = 'Redis'
-tags = ["Redis"]
-UseHugoToc = true
-+++
+---
+title: "Redis 核心知识"
+date: 2025-02-05T09:39:00+08:00
+draft: false
+description: "Redis 数据类型、持久化、集群等核心概念"
+tags: ["Redis", "数据库"]
+categories: ["后端开发"]
+author: "Heyuuuu"
+---
 
 
 #### 数据类型

@@ -1,10 +1,12 @@
-+++
-date = '2025-03-24T11:43:50+08:00'
-draft = false
-title = 'Python版本控制工具 UV'
-tags = ['python']
-toc = true
-+++
+---
+title: "Python 版本管理工具 UV"
+date: 2025-03-24T11:43:50+08:00
+draft: false
+description: "UV：极速的 Python 包管理器"
+tags: ["Python", "UV", "工具"]
+categories: ["Python"]
+author: "Heyuuuu"
+---
 
 
 ## UV

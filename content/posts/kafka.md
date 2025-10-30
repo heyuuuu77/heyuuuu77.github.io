@@ -1,9 +1,12 @@
-+++
-date = '2025-02-12T19:36:38+08:00'
-draft = false
-title = 'Kafka'
-tags = ['kafka']
-+++
+---
+title: "Kafka 入门指南"
+date: 2025-02-12T19:36:38+08:00
+draft: false
+description: "Kafka 消息队列核心概念与实践"
+tags: ["Kafka", "消息队列"]
+categories: ["后端开发"]
+author: "Heyuuuu"
+---
 
 
 #### Kafka

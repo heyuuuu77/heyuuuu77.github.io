@@ -1,8 +1,12 @@
-+++
-date = '2025-06-03T14:43:01+08:00'
-draft = false
-title = '记录一次curl的报错'
-+++
+---
+title: "记录一次 curl 报错"
+date: 2025-06-03T14:43:01+08:00
+draft: false
+description: "curl 命令使用中的问题排查"
+tags: ["curl", "Linux"]
+categories: ["工具"]
+author: "Heyuuuu"
+---
 
 
 ```php

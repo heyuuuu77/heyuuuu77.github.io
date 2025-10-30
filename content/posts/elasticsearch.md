@@ -1,8 +1,12 @@
-+++
-date = '2025-07-30T20:06:04+08:00'
-draft = false
-title = 'Elasticsearch'
-+++
+---
+title: "Elasticsearch 快速入门"
+date: 2025-07-30T20:06:04+08:00
+draft: false
+description: "Elasticsearch 部署与使用指南"
+tags: ["Elasticsearch", "搜索引擎"]
+categories: ["后端开发"]
+author: "Heyuuuu"
+---
 
 
 ### start elasticsearch with docker localhost

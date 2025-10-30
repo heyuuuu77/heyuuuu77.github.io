@@ -1,10 +1,12 @@
-+++
-date = '2025-02-05T11:09:45+08:00'
-draft = false
-title = 'Django的常见问题'
-tags = ['Django']
-TocOpen = true
-+++
+---
+title: "Django 常见问题"
+date: 2025-02-05T11:09:45+08:00
+draft: false
+description: "Django ORM、查询优化等常见问题汇总"
+tags: ["Django", "Python"]
+categories: ["后端开发"]
+author: "Heyuuuu"
+---
 
 
 #### 什么是ORM

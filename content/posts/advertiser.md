@@ -1,8 +1,12 @@
-+++
-date = '2025-04-14T09:53:08+08:00'
-draft = false
-title = 'Advertiser'
-+++
+---
+title: "广告系统基础"
+date: 2025-04-14T09:53:08+08:00
+draft: false
+description: "广告计费模式与投放策略"
+tags: ["广告", "商业模式"]
+categories: ["业务知识"]
+author: "Heyuuuu"
+---
 
 
 

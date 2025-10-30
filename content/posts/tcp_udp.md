@@ -1,8 +1,12 @@
-+++
-date = '2025-03-26T17:17:34+08:00'
-draft = false
-title = 'Tcp_udp'
-+++
+---
+title: "TCP 与 UDP 协议"
+date: 2025-03-26T17:17:34+08:00
+draft: false
+description: "TCP 和 UDP 协议原理与区别"
+tags: ["TCP", "UDP", "网络"]
+categories: ["计算机网络"]
+author: "Heyuuuu"
+---
 
 
 TCP/IP是一个协议簇，tcp协议(传输控制协议)，udp协议(用户数据协议)都包含在其中，还有http(超文本传输协议), ftp(文本传输协议), telnet(远程登录协议)等

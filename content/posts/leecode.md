@@ -1,9 +1,12 @@
-+++
-date = '2025-03-18T09:46:23+08:00'
-draft = false
-title = 'Leecode'
-UseHugoToc=true
-+++
+---
+title: "LeetCode 刷题记录"
+date: 2025-03-18T09:46:23+08:00
+draft: false
+description: "LeetCode 算法题解与思路分析"
+tags: ["LeetCode", "算法"]
+categories: ["算法"]
+author: "Heyuuuu"
+---
 
 
 ### 小镇法官
