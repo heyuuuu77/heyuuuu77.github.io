@@ -1,185 +1,31 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>设计模式详解 | heyuuuu77</title>
-<meta name=keywords content="设计模式,单例模式,工厂模式"><meta name=description content='设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类
-创建型
-
-单例模式
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="23种设计模式详解：创建型、结构型、行为型"><title>设计模式详解</title>
+<link rel=canonical href=https://heyuuuu77.github.io/posts/design_pattern/><link rel=stylesheet href=/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css><meta property='og:title' content="设计模式详解"><meta property='og:description' content="23种设计模式详解：创建型、结构型、行为型"><meta property='og:url' content='https://heyuuuu77.github.io/posts/design_pattern/'><meta property='og:site_name' content='Heyuuuu'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='设计模式'><meta property='article:tag' content='单例模式'><meta property='article:tag' content='工厂模式'><meta property='article:published_time' content='2025-02-05T10:00:19+08:00'><meta property='article:modified_time' content='2025-02-05T10:00:19+08:00'><meta name=twitter:title content="设计模式详解"><meta name=twitter:description content="23种设计模式详解：创建型、结构型、行为型"><link rel="shortcut icon" href=/favicon.ico></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_f509edb42ecc0ebd.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>👋</span></figure><div class=site-meta><h1 class=site-name><a href=/>Heyuuuu</a></h1><h2 class=site-description>简单记录生活点滴，分享技术学习心得</h2></div></header><ol class=menu-social><li><a href=https://github.com/heyuuuu77 target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=/index.xml target=_blank title=RSS rel=me><svg class="icon icon-tabler icon-tabler-rss" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="5" cy="19" r="1"/><path d="M4 4a16 16 0 0116 16"/><path d="M4 11a9 9 0 019 9"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/posts/><span>文章</span></a></li><li><a href=/categories/><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>归档</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>搜索</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><ol><li><ol><li><a href=#创建型>创建型</a></li><li><a href=#结构型>结构型</a></li><li><a href=#获取用户详情接口>获取用户详情接口</a></li></ol></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/>软件工程</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/posts/design_pattern/>设计模式详解</a></h2><h3 class=article-subtitle>23种设计模式详解：创建型、结构型、行为型</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2025-02-05</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 5 分钟</time></div></footer></div></header><section class=article-content><p>设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类</p><h4 id=创建型>创建型</h4><ol><li>单例模式
 确保一个类只有一个实例，并提供一个全局访问点来访问这个实例。
-Python中的实现方式是通过__new__魔术方法实现。
-
-
-class Singleton:
-    _instance = None
-
-    def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-
-# 使用示例
-s1 = Singleton()
-s2 = Singleton()
-print(s1 is s2)  # 输出: True
-
-工厂模式
-
-工厂模式可细分为简单工厂模式、工厂方法模式和抽象工厂模式。
-
-简单工厂模式
-
-定义一个工厂类，该类有一个创建对象的方法，通过传入不同的参数来创建不同类型的对象。
-class Animal:
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
-
-class AnimalFactory:
-    @staticmethod
-    def create_animal(animal_type):
-        if animal_type == &#39;dog&#39;:
-            return Dog()
-        elif animal_type == &#39;cat&#39;:
-            return Cat()
-        return None
-
-# 使用示例
-dog = AnimalFactory.create_animal(&#39;dog&#39;)
-print(dog.speak())  # 输出: Woof!
-
-工厂模式
-
-将对象的创建延迟到子类中进行。定义一个创建对象的抽象方法，由具体的子类来实现该方法，从而创建具体的对象
-class Animal:
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
-
-class AnimalFactory:
-    def create_animal(self):
-        pass
-
-class DogFactory(AnimalFactory):
-    def create_animal(self):
-        return Dog()
-
-class CatFactory(AnimalFactory):
-    def create_animal(self):
-        return Cat()
-
-# 使用示例
-dog_factory = DogFactory()
-dog = dog_factory.create_animal()
-print(dog.speak())  # 输出: Woof!
-
-抽象工厂模式
-
-提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类'><meta name=author content="Me"><link rel=canonical href=https://heyuuuu77.github.io/posts/design_pattern/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as=style><link rel=stylesheet href=https://heyuuuu77.github.io/assets/css/custom.css><script src=https://heyuuuu77.github.io/assets/js/random-gradient.js></script><link rel=icon href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://heyuuuu77.github.io/posts/design_pattern/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://heyuuuu77.github.io/posts/design_pattern/"><meta property="og:site_name" content="heyuuuu77"><meta property="og:title" content="设计模式详解"><meta property="og:description" content='设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类
-创建型 单例模式 确保一个类只有一个实例，并提供一个全局访问点来访问这个实例。 Python中的实现方式是通过__new__魔术方法实现。 class Singleton: _instance = None def __new__(cls, *args, **kwargs): if not cls._instance: cls._instance = super().__new__(cls, *args, **kwargs) return cls._instance # 使用示例 s1 = Singleton() s2 = Singleton() print(s1 is s2) # 输出: True 工厂模式 工厂模式可细分为简单工厂模式、工厂方法模式和抽象工厂模式。
-简单工厂模式 定义一个工厂类，该类有一个创建对象的方法，通过传入不同的参数来创建不同类型的对象。
-class Animal: def speak(self): pass class Dog(Animal): def speak(self): return "Woof!" class Cat(Animal): def speak(self): return "Meow!" class AnimalFactory: @staticmethod def create_animal(animal_type): if animal_type == &#39;dog&#39;: return Dog() elif animal_type == &#39;cat&#39;: return Cat() return None # 使用示例 dog = AnimalFactory.create_animal(&#39;dog&#39;) print(dog.speak()) # 输出: Woof! 工厂模式 将对象的创建延迟到子类中进行。定义一个创建对象的抽象方法，由具体的子类来实现该方法，从而创建具体的对象
-class Animal: def speak(self): pass class Dog(Animal): def speak(self): return "Woof!" class Cat(Animal): def speak(self): return "Meow!" class AnimalFactory: def create_animal(self): pass class DogFactory(AnimalFactory): def create_animal(self): return Dog() class CatFactory(AnimalFactory): def create_animal(self): return Cat() # 使用示例 dog_factory = DogFactory() dog = dog_factory.create_animal() print(dog.speak()) # 输出: Woof! 抽象工厂模式 提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-02-05T10:00:19+08:00"><meta property="article:modified_time" content="2025-02-05T10:00:19+08:00"><meta property="article:tag" content="设计模式"><meta property="article:tag" content="单例模式"><meta property="article:tag" content="工厂模式"><meta property="og:image" content="https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="设计模式详解"><meta name=twitter:description content='设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类
-创建型
-
-单例模式
-确保一个类只有一个实例，并提供一个全局访问点来访问这个实例。
-Python中的实现方式是通过__new__魔术方法实现。
-
-
-class Singleton:
-    _instance = None
-
-    def __new__(cls, *args, **kwargs):
-        if not cls._instance:
-            cls._instance = super().__new__(cls, *args, **kwargs)
-        return cls._instance
-
-# 使用示例
-s1 = Singleton()
-s2 = Singleton()
-print(s1 is s2)  # 输出: True
-
-工厂模式
-
-工厂模式可细分为简单工厂模式、工厂方法模式和抽象工厂模式。
-
-简单工厂模式
-
-定义一个工厂类，该类有一个创建对象的方法，通过传入不同的参数来创建不同类型的对象。
-class Animal:
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
-
-class AnimalFactory:
-    @staticmethod
-    def create_animal(animal_type):
-        if animal_type == &#39;dog&#39;:
-            return Dog()
-        elif animal_type == &#39;cat&#39;:
-            return Cat()
-        return None
-
-# 使用示例
-dog = AnimalFactory.create_animal(&#39;dog&#39;)
-print(dog.speak())  # 输出: Woof!
-
-工厂模式
-
-将对象的创建延迟到子类中进行。定义一个创建对象的抽象方法，由具体的子类来实现该方法，从而创建具体的对象
-class Animal:
-    def speak(self):
-        pass
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-
-class Cat(Animal):
-    def speak(self):
-        return "Meow!"
-
-class AnimalFactory:
-    def create_animal(self):
-        pass
-
-class DogFactory(AnimalFactory):
-    def create_animal(self):
-        return Dog()
-
-class CatFactory(AnimalFactory):
-    def create_animal(self):
-        return Cat()
-
-# 使用示例
-dog_factory = DogFactory()
-dog = dog_factory.create_animal()
-print(dog.speak())  # 输出: Woof!
-
-抽象工厂模式
-
-提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://heyuuuu77.github.io/posts/"},{"@type":"ListItem","position":2,"name":"设计模式详解","item":"https://heyuuuu77.github.io/posts/design_pattern/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"设计模式详解","name":"设计模式详解","description":"设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类\n创建型 单例模式 确保一个类只有一个实例，并提供一个全局访问点来访问这个实例。 Python中的实现方式是通过__new__魔术方法实现。 class Singleton: _instance = None def __new__(cls, *args, **kwargs): if not cls._instance: cls._instance = super().__new__(cls, *args, **kwargs) return cls._instance # 使用示例 s1 = Singleton() s2 = Singleton() print(s1 is s2) # 输出: True 工厂模式 工厂模式可细分为简单工厂模式、工厂方法模式和抽象工厂模式。\n简单工厂模式 定义一个工厂类，该类有一个创建对象的方法，通过传入不同的参数来创建不同类型的对象。\nclass Animal: def speak(self): pass class Dog(Animal): def speak(self): return \u0026#34;Woof!\u0026#34; class Cat(Animal): def speak(self): return \u0026#34;Meow!\u0026#34; class AnimalFactory: @staticmethod def create_animal(animal_type): if animal_type == \u0026#39;dog\u0026#39;: return Dog() elif animal_type == \u0026#39;cat\u0026#39;: return Cat() return None # 使用示例 dog = AnimalFactory.create_animal(\u0026#39;dog\u0026#39;) print(dog.speak()) # 输出: Woof! 工厂模式 将对象的创建延迟到子类中进行。定义一个创建对象的抽象方法，由具体的子类来实现该方法，从而创建具体的对象\nclass Animal: def speak(self): pass class Dog(Animal): def speak(self): return \u0026#34;Woof!\u0026#34; class Cat(Animal): def speak(self): return \u0026#34;Meow!\u0026#34; class AnimalFactory: def create_animal(self): pass class DogFactory(AnimalFactory): def create_animal(self): return Dog() class CatFactory(AnimalFactory): def create_animal(self): return Cat() # 使用示例 dog_factory = DogFactory() dog = dog_factory.create_animal() print(dog.speak()) # 输出: Woof! 抽象工厂模式 提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类\n","keywords":["设计模式","单例模式","工厂模式"],"articleBody":"设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类\n创建型 单例模式 确保一个类只有一个实例，并提供一个全局访问点来访问这个实例。 Python中的实现方式是通过__new__魔术方法实现。 class Singleton: _instance = None def __new__(cls, *args, **kwargs): if not cls._instance: cls._instance = super().__new__(cls, *args, **kwargs) return cls._instance # 使用示例 s1 = Singleton() s2 = Singleton() print(s1 is s2) # 输出: True 工厂模式 工厂模式可细分为简单工厂模式、工厂方法模式和抽象工厂模式。\n简单工厂模式 定义一个工厂类，该类有一个创建对象的方法，通过传入不同的参数来创建不同类型的对象。\nclass Animal: def speak(self): pass class Dog(Animal): def speak(self): return \"Woof!\" class Cat(Animal): def speak(self): return \"Meow!\" class AnimalFactory: @staticmethod def create_animal(animal_type): if animal_type == 'dog': return Dog() elif animal_type == 'cat': return Cat() return None # 使用示例 dog = AnimalFactory.create_animal('dog') print(dog.speak()) # 输出: Woof! 工厂模式 将对象的创建延迟到子类中进行。定义一个创建对象的抽象方法，由具体的子类来实现该方法，从而创建具体的对象\nclass Animal: def speak(self): pass class Dog(Animal): def speak(self): return \"Woof!\" class Cat(Animal): def speak(self): return \"Meow!\" class AnimalFactory: def create_animal(self): pass class DogFactory(AnimalFactory): def create_animal(self): return Dog() class CatFactory(AnimalFactory): def create_animal(self): return Cat() # 使用示例 dog_factory = DogFactory() dog = dog_factory.create_animal() print(dog.speak()) # 输出: Woof! 抽象工厂模式 提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类\nclass Pet: def play(self): pass class Guard: def protect(self): pass class DogPet(Pet): def play(self): return \"Dog is playing.\" class DogGuard(Guard): def protect(self): return \"Dog is guarding.\" class CatPet(Pet): def play(self): return \"Cat is playing.\" class CatGuard(Guard): def protect(self): return \"Cat is guarding (weakly).\" class AnimalFactory: def create_pet(self): pass def create_guard(self): pass class DogFactory(AnimalFactory): def create_pet(self): return DogPet() def create_guard(self): return DogGuard() class CatFactory(AnimalFactory): def create_pet(self): return CatPet() def create_guard(self): return CatGuard() # 使用示例 dog_factory = DogFactory() dog_pet = dog_factory.create_pet() dog_guard = dog_factory.create_guard() print(dog_pet.play()) # 输出: Dog is playing. print(dog_guard.protect()) # 输出: Dog is guarding. 结构型 代理模式 允许通过代理对象来控制另一个对象的访问。以下是一个简单的python实现： # 定义主题接口 class Subject: def request(self): pass # 定义真实主题类 class RealSubject(Subject): def request(self): print(\"Real Subject: handling request.\") # 定义代理类 class Proxy(Subject): def __init__(self. real_subject): self.real_subject = real_subject def request(self): # 在调用真实主题的方法之前可以进行一些预处理 print(\"Proxy: logging the request before forwarding\") self.real_subject.request() print(\"Proxy: logging the request after forwarding\") # 客户端代码 if __name__ == '__main__': real_subject = RealSubject() proxy = Proxy(real_subject) proxy.request() python没有java中的动态代理机制。但是可以通过Python的动态特性是的在运行时创建对象和修改对象的行为。以下是两种常见的方式:\n第一种装饰器模式:\ndef proxy_decorator(func): def wrapper(*args, **kwargs): print(\"Proxy: before func call\") result = func(*args, **kwargs) print(\"Proxy: after func call\") return result return wrapper # 定义一个目标函数 @proxy_decorator def target_function(): print(\"Targe func is running.\") 第二种 getattr:\nclass DynamicProxy: def __init__(self, target): self.target = target def __getattr__(self, name): def wrapper(*args, **kwargs): print(f\"Proxy: Before call {name}\") result = getattr(self.target, name)(*args, **kwargs) print(f\"Proxy: After call {name}\") return result return wrapper # 定义一个目标类 class Target: def method(self): print(\"Target method is running\") # 创建目标对象和代理对象 target = Target() proxy = DynamicProxy(target) # 通过代理对象调用目标方法 proxy.method() . 装饰器模式 允许向一个现有的对象添加新的功能，同时又不改变其结构，在Python中，装饰器是一种特殊函数，接受一个函数作为参数，并返回一个新的函数。新函数会在原函数基础上添加额外的功能。\n基础的装饰器示例:\n# 定义一个装饰器函数 def my_decorator(func): def wrapper(): print(\"原函数之前进行操作\") func() print(\"原函数之后进行操作\") return wrapper # 定义一个普通函数 @my_decorator def say_hello(): print(\"Hello\") # 调用被装饰后的函数 say_hello() 装饰 带参数的函数\ndef decorator_with_args(func): def wrapper(*args, **kwargs): print(\"Before\") result = func(*args, **kwargs) print(\"After\") return result return wrapper @decorator_with_args def add_numbers(a, b): return a + b # 调用被装饰带有参数的函数 result = add_numbers(3, 5) print(result) 带参数的装饰器\ndef repeat(n): def decorator(func): def wrapper(*args, **kwargs): for _ in range(n): result = func(*args, **kwargs) return result return wrapper return decorator @repeat(3) def greet(): print(\"Hi\") # 调用 带参数的装饰器 greet() 类装饰器\nclass MyDecorator: def __init__(self, func): self.func = func def __call__(self, *args, **kwargs): print(\"类装饰器, Before\") result = self.func(*args, **kwargs) print(\"类装饰器，After\") return result @MyDecorator def print_message(): print(\"这是一条消息\") # 调用被类装饰器装饰的函数 print_message() 组合模式 它允许你将对象组合成树形结构以表示\"部分-整体\"的层次关系。使用组合模式，客户端代码可以统一处理单个对象和对象组合，无需区分它们。 这种模式是的客户端代码可以一致的处理对象的组合结构，而不必关心具体是单个对象还是对象组合。 从而简化客户端代码的编写。\n组合模式通常有以下几个角色:\n抽象组件(Component): 定义了组合中对象的公共接口，声明了用于管理子组件和访问子组件的方法，单个对象和组合对象都要实现这个接口。 叶子组件(Leaf): 表示组合中的叶子结点 复合组件(Composite): 表示组合中的分支节点，包含子节点，可以是叶子结点或其他复合组件。 它实现了抽象组件接口中管理子组件的方法。 代码示例:\n# 抽象组件类 class FileSystemComponent: def display(self, depth=0): pass def add(self, component): pass def remove(self, component): pass def get_child(self, index): pass # 叶子组件类：文件 class File(FileSystemComponent): def __init__(self, name): self.name = name def display(self, depth=0): print(\" \" * depth + self.name) # 复合组件类：文件夹 class Folder(FileSystemComponent): def __init__(self, name): self.name = name self.children = [] def display(self, depth=0): print(\" \" * depth + self.name) for child in self.children: child.display(depth + 1) def add(self, component): self.children.append(component) def remove(self, component): if component in self.children: self.children.remove(component) def get_child(self, index): if 0 \u003c= index \u003c len(self.children): return self.children[index] return None # 客户端代码 if __name__ == \"__main__\": # 创建文件夹和文件 root_folder = Folder(\"Root\") sub_folder1 = Folder(\"Subfolder 1\") sub_folder2 = Folder(\"Subfolder 2\") file1 = File(\"File 1\") file2 = File(\"File 2\") file3 = File(\"File 3\") # 构建文件系统结构 sub_folder1.add(file1) sub_folder1.add(file2) sub_folder2.add(file3) root_folder.add(sub_folder1) root_folder.add(sub_folder2) # 显示文件系统结构 root_folder.display() 获取用户详情接口 ","wordCount":"640","inLanguage":"en","image":"https://heyuuuu77.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2025-02-05T10:00:19+08:00","dateModified":"2025-02-05T10:00:19+08:00","author":{"@type":"Person","name":"Me"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://heyuuuu77.github.io/posts/design_pattern/"},"publisher":{"@type":"Organization","name":"heyuuuu77","logo":{"@type":"ImageObject","url":"https://heyuuuu77.github.io/%3Clink%20/%20abs%20url%3E"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://heyuuuu77.github.io/ accesskey=h title="Home (Alt + H)"><img src=https://heyuuuu77.github.io/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://heyuuuu77.github.io/categories title=categories><span>categories</span></a></li><li><a href=https://heyuuuu77.github.io/posts/ title=Posts><span>Posts</span></a></li><li><a href=https://heyuuuu77.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://example.org title=example.org><span>example.org</span>&nbsp;<svg fill="none" shape-rendering="geometricPrecision" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://heyuuuu77.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://heyuuuu77.github.io/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">设计模式详解</h1><div class=post-meta><span title='2025-02-05 10:00:19 +0800 CST'>February 5, 2025</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;640 words&nbsp;·&nbsp;Me</div><hr><ul class=post-tags><li><a class=post-tag href=https://heyuuuu77.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/>设计模式</a></li><li><a class=post-tag href=https://heyuuuu77.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/>单例模式</a></li><li><a class=post-tag href=https://heyuuuu77.github.io/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/>工厂模式</a></li></ul></header><div class=post-content><p>设计模式是软件开发中针对各种反复出现的问题归纳出的通用的解决方案，总共有23种设计模式，分别分成创建型，结构性和行为型三大类</p><h4 id=创建型>创建型<a hidden class=anchor aria-hidden=true href=#创建型>#</a></h4><ol><li>单例模式
-确保一个类只有一个实例，并提供一个全局访问点来访问这个实例。
-Python中的实现方式是通过__new__魔术方法实现。</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>
+Python中的实现方式是通过__new__魔术方法实现。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Singleton</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=n>_instance</span> <span class=o>=</span> <span class=kc>None</span>
 </span></span><span class=line><span class=cl>
@@ -192,7 +38,31 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl><span class=n>s1</span> <span class=o>=</span> <span class=n>Singleton</span><span class=p>()</span>
 </span></span><span class=line><span class=cl><span class=n>s2</span> <span class=o>=</span> <span class=n>Singleton</span><span class=p>()</span>
 </span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>s1</span> <span class=ow>is</span> <span class=n>s2</span><span class=p>)</span>  <span class=c1># 输出: True</span>
-</span></span></code></pre></div><ol start=2><li>工厂模式</li></ol><p>工厂模式可细分为简单工厂模式、工厂方法模式和抽象工厂模式。</p><ul><li><strong>简单工厂模式</strong></li></ul><p>定义一个工厂类，该类有一个创建对象的方法，通过传入不同的参数来创建不同类型的对象。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Animal</span><span class=p>:</span>
+</span></span></code></pre></td></tr></table></div></div><ol start=2><li>工厂模式</li></ol><p>工厂模式可细分为简单工厂模式、工厂方法模式和抽象工厂模式。</p><ul><li><strong>简单工厂模式</strong></li></ul><p>定义一个工厂类，该类有一个创建对象的方法，通过传入不同的参数来创建不同类型的对象。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Animal</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>speak</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=k>pass</span>
 </span></span><span class=line><span class=cl>
@@ -216,7 +86,35 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl><span class=c1># 使用示例</span>
 </span></span><span class=line><span class=cl><span class=n>dog</span> <span class=o>=</span> <span class=n>AnimalFactory</span><span class=o>.</span><span class=n>create_animal</span><span class=p>(</span><span class=s1>&#39;dog&#39;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>dog</span><span class=o>.</span><span class=n>speak</span><span class=p>())</span>  <span class=c1># 输出: Woof!</span>
-</span></span></code></pre></div><ul><li><strong>工厂模式</strong></li></ul><p>将对象的创建延迟到子类中进行。定义一个创建对象的抽象方法，由具体的子类来实现该方法，从而创建具体的对象</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Animal</span><span class=p>:</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li><strong>工厂模式</strong></li></ul><p>将对象的创建延迟到子类中进行。定义一个创建对象的抽象方法，由具体的子类来实现该方法，从而创建具体的对象</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Animal</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>speak</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=k>pass</span>
 </span></span><span class=line><span class=cl>
@@ -244,7 +142,58 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl><span class=n>dog_factory</span> <span class=o>=</span> <span class=n>DogFactory</span><span class=p>()</span>
 </span></span><span class=line><span class=cl><span class=n>dog</span> <span class=o>=</span> <span class=n>dog_factory</span><span class=o>.</span><span class=n>create_animal</span><span class=p>()</span>
 </span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>dog</span><span class=o>.</span><span class=n>speak</span><span class=p>())</span>  <span class=c1># 输出: Woof!</span>
-</span></span></code></pre></div><ul><li><strong>抽象工厂模式</strong></li></ul><p>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=line><span class=cl><span class=k>class</span> <span class=nc>Pet</span><span class=p>:</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li><strong>抽象工厂模式</strong></li></ul><p>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-py data-lang=py><span class=line><span class=cl><span class=k>class</span> <span class=nc>Pet</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>play</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=k>pass</span>
 </span></span><span class=line><span class=cl>
@@ -295,8 +244,36 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl><span class=n>dog_guard</span> <span class=o>=</span> <span class=n>dog_factory</span><span class=o>.</span><span class=n>create_guard</span><span class=p>()</span>
 </span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>dog_pet</span><span class=o>.</span><span class=n>play</span><span class=p>())</span>  <span class=c1># 输出: Dog is playing.</span>
 </span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>dog_guard</span><span class=o>.</span><span class=n>protect</span><span class=p>())</span>  <span class=c1># 输出: Dog is guarding.</span>
-</span></span></code></pre></div><h4 id=结构型>结构型<a hidden class=anchor aria-hidden=true href=#结构型>#</a></h4><ol><li>代理模式
-允许通过代理对象来控制另一个对象的访问。以下是一个简单的python实现：</li></ol><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># 定义主题接口</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=结构型>结构型</h4><ol><li>代理模式
+允许通过代理对象来控制另一个对象的访问。以下是一个简单的python实现：</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># 定义主题接口</span>
 </span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Subject</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>request</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=k>pass</span>
@@ -324,7 +301,20 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl>    <span class=n>real_subject</span> <span class=o>=</span> <span class=n>RealSubject</span><span class=p>()</span>
 </span></span><span class=line><span class=cl>    <span class=n>proxy</span> <span class=o>=</span> <span class=n>Proxy</span><span class=p>(</span><span class=n>real_subject</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>    <span class=n>proxy</span><span class=o>.</span><span class=n>request</span><span class=p>()</span>
-</span></span></code></pre></div><p>python没有java中的动态代理机制。但是可以通过Python的动态特性是的在运行时创建对象和修改对象的行为。以下是两种常见的方式:</p><p>第一种装饰器模式:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>proxy_decorator</span><span class=p>(</span><span class=n>func</span><span class=p>):</span>
+</span></span></code></pre></td></tr></table></div></div><p>python没有java中的动态代理机制。但是可以通过Python的动态特性是的在运行时创建对象和修改对象的行为。以下是两种常见的方式:</p><p>第一种装饰器模式:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>proxy_decorator</span><span class=p>(</span><span class=n>func</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>wrapper</span><span class=p>(</span><span class=o>*</span><span class=n>args</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Proxy: before func call&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>        <span class=n>result</span> <span class=o>=</span> <span class=n>func</span><span class=p>(</span><span class=o>*</span><span class=n>args</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>)</span>
@@ -337,7 +327,32 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl><span class=nd>@proxy_decorator</span>
 </span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>target_function</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Targe func is running.&#34;</span><span class=p>)</span>
-</span></span></code></pre></div><p>第二种 <strong>getattr</strong>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>DynamicProxy</span><span class=p>:</span>
+</span></span></code></pre></td></tr></table></div></div><p>第二种 <strong>getattr</strong>:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>DynamicProxy</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>target</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>target</span> <span class=o>=</span> <span class=n>target</span>
 </span></span><span class=line><span class=cl>
@@ -362,7 +377,23 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl><span class=c1># 通过代理对象调用目标方法</span>
 </span></span><span class=line><span class=cl><span class=n>proxy</span><span class=o>.</span><span class=n>method</span><span class=p>()</span>
 </span></span><span class=line><span class=cl><span class=o>.</span>
-</span></span></code></pre></div><ol start=2><li>装饰器模式</li></ol><p>允许向一个现有的对象添加新的功能，同时又不改变其结构，在Python中，装饰器是一种特殊函数，接受一个函数作为参数，并返回一个新的函数。新函数会在原函数基础上添加额外的功能。</p><p>基础的装饰器示例:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># 定义一个装饰器函数</span>
+</span></span></code></pre></td></tr></table></div></div><ol start=2><li>装饰器模式</li></ol><p>允许向一个现有的对象添加新的功能，同时又不改变其结构，在Python中，装饰器是一种特殊函数，接受一个函数作为参数，并返回一个新的函数。新函数会在原函数基础上添加额外的功能。</p><p>基础的装饰器示例:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># 定义一个装饰器函数</span>
 </span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>my_decorator</span><span class=p>(</span><span class=n>func</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>wrapper</span><span class=p>():</span>
 </span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;原函数之前进行操作&#34;</span><span class=p>)</span>
@@ -378,7 +409,24 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># 调用被装饰后的函数</span>
 </span></span><span class=line><span class=cl><span class=n>say_hello</span><span class=p>()</span>
-</span></span></code></pre></div><p><strong>装饰 带参数的函数</strong></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>decorator_with_args</span><span class=p>(</span><span class=n>func</span><span class=p>):</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>装饰 带参数的函数</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>decorator_with_args</span><span class=p>(</span><span class=n>func</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>wrapper</span><span class=p>(</span><span class=o>*</span><span class=n>args</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;Before&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl>        <span class=n>result</span> <span class=o>=</span> <span class=n>func</span><span class=p>(</span><span class=o>*</span><span class=n>args</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>)</span>
@@ -395,7 +443,22 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl><span class=c1># 调用被装饰带有参数的函数</span>
 </span></span><span class=line><span class=cl><span class=n>result</span> <span class=o>=</span> <span class=n>add_numbers</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>5</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=n>result</span><span class=p>)</span>
-</span></span></code></pre></div><p><strong>带参数的装饰器</strong></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>repeat</span><span class=p>(</span><span class=n>n</span><span class=p>):</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>带参数的装饰器</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>repeat</span><span class=p>(</span><span class=n>n</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>decorator</span><span class=p>(</span><span class=n>func</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=k>def</span> <span class=nf>wrapper</span><span class=p>(</span><span class=o>*</span><span class=n>args</span><span class=p>,</span> <span class=o>**</span><span class=n>kwargs</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>n</span><span class=p>):</span>
@@ -410,7 +473,23 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># 调用 带参数的装饰器</span>
 </span></span><span class=line><span class=cl><span class=n>greet</span><span class=p>()</span>
-</span></span></code></pre></div><p><strong>类装饰器</strong></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>MyDecorator</span><span class=p>:</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>类装饰器</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>MyDecorator</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>func</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>func</span> <span class=o>=</span> <span class=n>func</span>
 </span></span><span class=line><span class=cl>
@@ -426,8 +505,73 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=c1># 调用被类装饰器装饰的函数</span>
 </span></span><span class=line><span class=cl><span class=n>print_message</span><span class=p>()</span>
-</span></span></code></pre></div><ol start=3><li>组合模式</li></ol><p>它允许你将对象组合成树形结构以表示"部分-整体"的层次关系。使用组合模式，客户端代码可以统一处理单个对象和对象组合，无需区分它们。 这种模式是的客户端代码可以一致的处理对象的组合结构，而不必关心具体是单个对象还是对象组合。
-从而简化客户端代码的编写。</p><p>组合模式通常有以下几个角色:</p><ul><li>抽象组件(Component): 定义了组合中对象的公共接口，声明了用于管理子组件和访问子组件的方法，单个对象和组合对象都要实现这个接口。</li><li>叶子组件(Leaf): 表示组合中的叶子结点</li><li>复合组件(Composite): 表示组合中的分支节点，包含子节点，可以是叶子结点或其他复合组件。 它实现了抽象组件接口中管理子组件的方法。</li></ul><p>代码示例:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># 抽象组件类</span>
+</span></span></code></pre></td></tr></table></div></div><ol start=3><li>组合模式</li></ol><p>它允许你将对象组合成树形结构以表示"部分-整体"的层次关系。使用组合模式，客户端代码可以统一处理单个对象和对象组合，无需区分它们。 这种模式是的客户端代码可以一致的处理对象的组合结构，而不必关心具体是单个对象还是对象组合。
+从而简化客户端代码的编写。</p><p>组合模式通常有以下几个角色:</p><ul><li>抽象组件(Component): 定义了组合中对象的公共接口，声明了用于管理子组件和访问子组件的方法，单个对象和组合对象都要实现这个接口。</li><li>叶子组件(Leaf): 表示组合中的叶子结点</li><li>复合组件(Composite): 表示组合中的分支节点，包含子节点，可以是叶子结点或其他复合组件。 它实现了抽象组件接口中管理子组件的方法。</li></ul><p>代码示例:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># 抽象组件类</span>
 </span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>FileSystemComponent</span><span class=p>:</span>
 </span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>display</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>depth</span><span class=o>=</span><span class=mi>0</span><span class=p>):</span>
 </span></span><span class=line><span class=cl>        <span class=k>pass</span>
@@ -492,8 +636,14 @@ Python中的实现方式是通过__new__魔术方法实现。</li></ol><div clas
 </span></span><span class=line><span class=cl>    <span class=c1># 显示文件系统结构</span>
 </span></span><span class=line><span class=cl>    <span class=n>root_folder</span><span class=o>.</span><span class=n>display</span><span class=p>()</span>
 </span></span><span class=line><span class=cl>    
-</span></span></code></pre></div><h4 id=获取用户详情接口>获取用户详情接口<a hidden class=anchor aria-hidden=true href=#获取用户详情接口>#</a></h4></div></article></main><footer class=footer><span>&copy; 2025 <a href=https://heyuuuu77.github.io/>heyuuuu77</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
+</span></span></code></pre></td></tr></table></div></div><h4 id=获取用户详情接口>获取用户详情接口</h4></section><footer class=article-footer><section class=article-tags><a href=/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/>设计模式</a>
+<a href=/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/>单例模式</a>
+<a href=/tags/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/>工厂模式</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E/><div class=article-details><h2 class=article-title>《设计模式之美》读书笔记</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2025 © 2024-2025 Heyuuuu</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.31.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
